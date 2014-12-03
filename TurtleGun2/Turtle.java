@@ -1,33 +1,27 @@
 
-/**
- * Write a description of class Turtle here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Turtle
-{
-    // instance variables - replace the example below with your own
-    private int x;
+import java.awt.event.KeyEvent;
 
-    /**
-     * Constructor for objects of class Turtle
-     */
-    public Turtle()
-    {
-        // initialise instance variables
-        x = 0;
+public class Turtle {
+    public Turtle() {
+
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public int getDistance() {
+        
+    }
+    
+    public Image getTurtle() {
+        
+    }
+    
+    public void keyPressed(int keyCode) {
+        if (key = KeyEvent.VK_SPACE) {
+            
+        } 
+        if (keyCode = KeyEvent.VK_LEFT) {
+            
+        } else if (keyCode = KeyEvent.VK_RIGHT) {
+            
+        }
     }
 }

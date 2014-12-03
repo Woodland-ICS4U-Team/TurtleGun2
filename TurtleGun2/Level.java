@@ -1,33 +1,16 @@
 
-/**
- * Write a description of class Level here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Level
-{
-    // instance variables - replace the example below with your own
-    private int x;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-    /**
-     * Constructor for objects of class Level
-     */
-    public Level()
-    {
-        // initialise instance variables
-        x = 0;
+public class Level extends JPanel impliments ActionListener {
+   
+    public level() {
+        addKeyListener(new keyListener)
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    
 }
