@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Turtle()
+comment1.params=
+comment1.target=java.awt.Image\ getImage()
+comment2.params=
+comment2.target=int\ getX()
+comment3.params=
+comment3.target=int\ getY()
+comment4.params=
+comment4.target=int\ getDistance()
+comment5.params=keyCode
+comment5.target=void\ keyPressed(int)
+numComments=6
