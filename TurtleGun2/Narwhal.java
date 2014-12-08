@@ -1,33 +1,36 @@
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
-/**
- * Write a description of class Narwhal here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Narwhal
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class Narwhal {
+    private static int distance;
+    private static String narwhalImage = "narwhal.png";
+    private static int width;
+    private static int height;
+    private static int x = 100;
+    private static int y = 150;
+    private static Image image;
 
-    /**
-     * Constructor for objects of class Narwhal
-     */
-    public Narwhal()
-    {
-        // initialise instance variables
-        x = 0;
+    public Narwhal() {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(narwhalImage));
+        image = ii.getImage();
+        width = image.getWidth(null);
+        height = image.getHeight(null);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public static Image getImage() {
+        return image;
     }
+    
+    public static int getX() {
+        return x;
+    }
+    
+    public static int getY() {
+        return y;
+    }
+    
+    public static int getDistance() {
+        return distance;
+    }
+    
 }
