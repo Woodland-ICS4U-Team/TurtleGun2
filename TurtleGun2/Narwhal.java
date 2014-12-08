@@ -1,21 +1,33 @@
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
-public class Narwhal {
-    
-    private int distance;
-    private Image narwhalImage;
-    private int width = 250;
-    private int height = 175;
-    private int x = 100;
-    private int y = 390; 
+/**
+ * Write a description of class Narwhal here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Narwhal
+{
+    // instance variables - replace the example below with your own
+    private int x;
 
-   
-    public Narwhal() {
-      narwhalImage = (new ImageComponent("narwhal.png"));
-       
+    /**
+     * Constructor for objects of class Narwhal
+     */
+    public Narwhal()
+    {
+        // initialise instance variables
+        x = 0;
     }
-    
-  
-}
 
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+    public int sampleMethod(int y)
+    {
+        // put your code here
+        return x + y;
+    }
+}
