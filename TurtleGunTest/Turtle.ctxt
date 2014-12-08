@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Narwhal()
+comment0.target=Turtle()
 comment1.params=
 comment1.target=java.awt.Image\ getImage()
 comment2.params=
@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=int\ getY()
 comment4.params=
 comment4.target=int\ getDistance()
-numComments=5
+comment5.params=keyCode
+comment5.target=void\ keyPressed(int)
+numComments=6
