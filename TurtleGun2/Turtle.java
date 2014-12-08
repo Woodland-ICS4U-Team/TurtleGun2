@@ -7,10 +7,10 @@ public class Turtle {
     
     private static int distance;
     private static Image turtleImage;
-    private static int width = 150;
-    private static int height = 100;
-    private static int x = 400;
-    private static int y = 390;
+    private static int width;
+    private static int height;
+    private static int x = 100;
+    private static int y = 100;
     
     
     public Turtle() {
