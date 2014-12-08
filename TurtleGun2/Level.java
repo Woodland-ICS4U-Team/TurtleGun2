@@ -10,10 +10,11 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Level extends JPanel implements ActionListener {
-   
+    private Turtle turtle;
     public Level() {
         addKeyListener(new KeyListener());
         System.out.println("added key listener");
+        turtle = new Turtle();
     }
     
     public void paint(Graphics g) {

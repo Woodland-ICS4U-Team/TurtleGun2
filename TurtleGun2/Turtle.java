@@ -6,22 +6,25 @@ import javax.swing.ImageIcon;
 public class Turtle {
     
     private static int distance;
-    private static Image turtleImage;
+    private String turtleImage = "turtleImage.png";
     private static int width;
     private static int height;
     private static int x = 100;
     private static int y = 100;
+    private static Image image;
     
     
     public Turtle() {
-        turtleImage = (new ImageComponent("turtleImage.png"));
-        width = turtleImage.getWidth(null);
-        height = turtleImage.getHeight(null);
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(turtleImage));
+        //turtleImage = (new ImageComponent("turtleImage.png"));
+        image = ii.getImage();
+        width = image.getWidth(null);
+        height = image.getHeight(null);
      
     }
     
     public static Image getImage() {
-        return turtleImage;
+        return image;
     }
     
     public static int getX() {
