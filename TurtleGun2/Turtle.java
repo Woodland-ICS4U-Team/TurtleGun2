@@ -45,7 +45,8 @@ public class Turtle {
         } 
         if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Left pressed");
-        } else if (keyCode == KeyEvent.VK_RIGHT) {
+        } 
+        if (keyCode == KeyEvent.VK_RIGHT) {
             System.out.println("Right pressed");
         }
     }
