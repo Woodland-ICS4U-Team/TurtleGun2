@@ -32,8 +32,8 @@ public class Narwhal {
     public static int getDistance() {
         return distance;
     }
-    //public static void move() {
-    //    Math.sin(y);
+    public static void move() {
+        Math.sin(y);
         
-   // }
+    }
 }
