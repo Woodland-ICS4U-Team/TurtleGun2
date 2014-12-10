@@ -7,7 +7,7 @@ public class Narwhal {
     private static int width;
     private static int height;
     private static int x = 100;
-    private static double y = 150;
+    private static int y = 150;
     private static Image image;
 
     public Narwhal() {
@@ -25,13 +25,14 @@ public class Narwhal {
         return x;
     }
     
-    public static double getY() {
+    public static int getY() {
         return y;
     }
     
     public static int getDistance() {
         return distance;
     }
+    
     public static void move() {
         Math.sin(y);
         
