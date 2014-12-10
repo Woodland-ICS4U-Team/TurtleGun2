@@ -22,14 +22,10 @@ public class Obstacle {
     }
     
     public int getX() {
-        return x;
+return 1;
     }
     
     public int getY() {
-        return y;
-    }
-    
-    public int getDistance() {
-        return distance;
+return 1;
     }
 }
