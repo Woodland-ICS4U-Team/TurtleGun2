@@ -2,9 +2,11 @@
 comment0.params=
 comment0.target=Obstacle()
 comment1.params=
-comment1.target=java.awt.Image\ getImage()
-comment2.params=
-comment2.target=int\ getX()
-comment3.params=
-comment3.target=int\ getY()
-numComments=4
+comment1.target=void\ addObstacle()
+comment2.params=distance
+comment2.target=void\ moveObjects(int)
+comment3.params=objectNumber
+comment3.target=int\ getX(int)
+comment4.params=objectNumber
+comment4.target=int\ getY(int)
+numComments=5
