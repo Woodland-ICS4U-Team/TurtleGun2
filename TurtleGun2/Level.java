@@ -16,12 +16,11 @@ public class Level extends JPanel implements ActionListener {
     
     public Level() {
         addKeyListener(new KeyListener());
-        System.out.println("added key listener");
+        System.out.println("added key listener");      
     }
     
     public void paint(Graphics g) {
         super.paint(g);
-        
         Graphics2D graphics = (Graphics2D)g;
         graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
         graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
@@ -30,6 +29,7 @@ public class Level extends JPanel implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         repaint();
-        
+        narwhal.move();
+        System.out.println("Actionperformed called");
     }
 }

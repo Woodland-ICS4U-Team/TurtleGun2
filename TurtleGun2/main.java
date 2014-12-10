@@ -12,6 +12,7 @@ public class Main extends JFrame{
         setTitle("Turtle Gun 2");
         setResizable(false);
         setVisible(true);
+        
     }
     
     public static void main(String[] args) {
