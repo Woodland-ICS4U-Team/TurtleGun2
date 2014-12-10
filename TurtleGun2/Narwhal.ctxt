@@ -9,6 +9,4 @@ comment3.params=
 comment3.target=double\ getY()
 comment4.params=
 comment4.target=int\ getDistance()
-comment5.params=
-comment5.target=void\ move()
-numComments=6
+numComments=5
