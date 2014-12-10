@@ -1,33 +1,35 @@
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
-/**
- * Write a description of class Obstacle here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Obstacle
-{
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Obstacle
-     */
-    public Obstacle()
-    {
-        // initialise instance variables
-        x = 0;
+public class Obstacle {
+    
+    private String image1 = "Narwhal.png";
+    private String image2 = "Narwhal.png";
+    private String image3 = "Narwal.png";
+    private Image image;
+    private int objectTable[][];
+    
+    public Obstacle() {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(image1));
+        image = ii.getImage();
+       // width = image.getWidth(null);
+        //height = image.getHeight(null);
+     
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public Image getImage() {
+        return image;
+    }
+    
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
+    
+    public int getDistance() {
+        return distance;
     }
 }
