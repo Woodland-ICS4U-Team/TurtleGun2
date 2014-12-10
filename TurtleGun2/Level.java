@@ -23,7 +23,6 @@ public class Level extends JPanel implements ActionListener {
         super.paint(g);
         
         Graphics2D graphics = (Graphics2D)g;
-        graphics.drawString("Does it work?", 5, 15);
         graphics.drawImage(Turtle.getImage(), Turtle.getX(), Turtle.getY(), this);
         graphics.drawImage(Narwhal.getImage(), Narwhal.getX(), Narwhal.getY(), this);
         g.dispose();
