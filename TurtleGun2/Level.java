@@ -13,7 +13,7 @@ public class Level extends JPanel implements ActionListener {
     
     private Turtle franklin = new Turtle();
     private Narwhal narwhal = new Narwhal();
-    
+    private Piranha nemo = new Piranha(5, 8);
     public Level() {
         addKeyListener(new KeyListener());
         System.out.println("added key listener");
@@ -25,6 +25,7 @@ public class Level extends JPanel implements ActionListener {
         Graphics2D graphics = (Graphics2D)g;
         graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
         graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
+        graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
         g.dispose();
     }
     
