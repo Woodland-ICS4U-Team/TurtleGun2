@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 public class Piranha {
-
+    private String prianhaImage = "Piranha.png";
     private int x, y;
     private Image image;
     boolean visible;
@@ -15,7 +15,7 @@ public class Piranha {
 
     public Piranha(int x, int y) {
 
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("Piranha.png"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
         visible = true;
         width = image.getWidth(null);
