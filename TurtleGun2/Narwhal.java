@@ -17,22 +17,22 @@ public class Narwhal {
         height = image.getHeight(null);
     }
 
-    public static Image getImage() {
+    public Image getImage() {
         return image;
     }
     
-    public static int getX() {
+    public int getX() {
         return x;
     }
     
-    public static double getY() {
+    public double getY() {
         return y;
     }
     
-    public static int getDistance() {
+    public int getDistance() {
         return distance;
     }
-    public static void move() {
+    public void move() {
         Math.sin(y);
         
     }
