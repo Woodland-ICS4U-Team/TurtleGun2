@@ -5,13 +5,13 @@ import javax.swing.ImageIcon;
 
 public class Turtle {
     
-    private static int distance;
-    private static String turtleImage = "turtleImage.png";
-    private static int width;
-    private static int height;
-    private static int x = 400;
-    private static int y = 150;
-    private static Image image;
+    private int distance;
+    private String turtleImage = "turtleImage.png";
+    private int width;
+    private int height;
+    private int x = 400;
+    private int y = 150;
+    private Image image;
     
     
     public Turtle() {
@@ -23,23 +23,23 @@ public class Turtle {
      
     }
     
-    public static Image getImage() {
+    public Image getImage() {
         return image;
     }
     
-    public static int getX() {
+    public int getX() {
         return x;
     }
     
-    public static int getY() {
+    public int getY() {
         return y;
     }
     
-    public static int getDistance() {
+    public int getDistance() {
         return distance;
     }
     
-    public static void keyPressed(int keyCode) {
+    public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
         } 

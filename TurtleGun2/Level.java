@@ -10,21 +10,21 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Level extends JPanel implements ActionListener {
-    private Turtle turtle;
-    private Narwhal narwhal;
+    
+    private Turtle franklin = new Turtle();
+    private Narwhal narwhal = new Narwhal();
+    
     public Level() {
         addKeyListener(new KeyListener());
         System.out.println("added key listener");
-        turtle = new Turtle();
-        narwhal = new Narwhal();
     }
     
     public void paint(Graphics g) {
         super.paint(g);
         
         Graphics2D graphics = (Graphics2D)g;
-        graphics.drawImage(Turtle.getImage(), Turtle.getX(), Turtle.getY(), this);
-        graphics.drawImage(Narwhal.getImage(), Narwhal.getX(), Narwhal.getY(), this);
+        graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
+        graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
         g.dispose();
     }
     
