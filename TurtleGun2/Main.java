@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.util.*;
 
 public class Main extends JFrame{
     
@@ -11,7 +12,8 @@ public class Main extends JFrame{
         setTitle("Turtle Gun 2");
         setResizable(false);
         setVisible(true);
-        
+        Timer gameSchedule = new Timer();
+        gameSchedule.schedule(new GameTimer(), 0, 33);
     }
     
     public static void main(String[] args) {

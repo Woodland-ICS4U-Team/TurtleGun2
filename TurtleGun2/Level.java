@@ -2,21 +2,19 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Level extends JPanel implements ActionListener {
+public class Level extends JPanel {
     
     private Turtle franklin = new Turtle();
     private Narwhal narwhal = new Narwhal();
     private Piranha nemo = new Piranha(5, 8);
+    
     public Level() {
         addKeyListener(new KeyListener());
-        System.out.println("added key listener");      
     }
     
     public void paint(Graphics g) {
@@ -28,7 +26,7 @@ public class Level extends JPanel implements ActionListener {
         g.dispose();
     }
     
-    public void actionPerformed(ActionEvent e) {
+    public void run() {
         repaint();
         narwhal.move();
         System.out.println("Actionperformed called");
