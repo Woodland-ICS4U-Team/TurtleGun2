@@ -18,12 +18,12 @@ public class Obstacle {
     private boolean objectVisible[] = new boolean [MAX_OBJECTS];
     
     public Obstacle() {
-        ImageIcon one = new ImageIcon(this.getClass().getResource("narwal.png"));
-        objectImages[0] = one.getImage();
-        ImageIcon two = new ImageIcon(this.getClass().getResource("narwal.png"));
-        objectImages[1] = two.getImage();
-        ImageIcon three = new ImageIcon(this.getClass().getResource("narwal.png"));
-        objectImages[2] = three.getImage();
+        //ImageIcon one = new ImageIcon(this.getClass().getResource("narwal.png"));
+        //objectImages[0] = one.getImage();
+        //ImageIcon two = new ImageIcon(this.getClass().getResource("narwal.png"));
+        //objectImages[1] = two.getImage();
+        //ImageIcon three = new ImageIcon(this.getClass().getResource("narwal.png"));
+        //objectImages[2] = three.getImage();
     }
     
     public void addObstacle() {
@@ -43,7 +43,7 @@ public class Obstacle {
     public void moveObjects(int distance) {
         for (int i = 0; i < MAX_OBJECTS; i ++) {
             if (objectVisible[i] == true) {
-                objectX[i] -= 10;
+                objectX[i] -= distance;
             }
         }
     }
