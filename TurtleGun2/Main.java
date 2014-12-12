@@ -5,9 +5,8 @@ public class Main extends JFrame{
     private int FRAMES_PER_SECOND = 30;
     private static int LEVEL_WIDTH = 1280;
     private static int LEVEL_HEIGHT = 720;
-    
     Level stage = new Level();
-    //The GameTimer is given the stage as a parameter so that it can call the repaint method whenever the stage moves
+    //The GameTimer is given the stage so that it can call the repaint method whenever the stage moves
     GameTimer timer = new GameTimer(stage);
     Timer gameSchedule = new Timer();
 
