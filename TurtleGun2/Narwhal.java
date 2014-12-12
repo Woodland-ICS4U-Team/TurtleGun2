@@ -35,7 +35,7 @@ public class Narwhal {
     }
     
     public void move() {
-        y = (int)(20 * Math.sin(z)) + 360;
+        y = (int)(260 * Math.sin(z)) + 250;
         z += .1;
     }
 }
