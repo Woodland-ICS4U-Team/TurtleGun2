@@ -15,6 +15,7 @@ public class Level extends JPanel {
     private int levelSpeed = 5;
     private int levelWidth;
     private int levelHeight;
+    private int hitObjectNumber = -1;
     
     public Level() {
         addKeyListener(new KeyListener());
@@ -49,6 +50,14 @@ public class Level extends JPanel {
         narwhal.move();
         obstacles.addObstacle();
         obstacles.moveObstacles(levelSpeed);
+        hitObjectNumber = obstacles.checkCollisions(franklin.getX(), franklin.getY(), franklin.getWidth(), franklin.getHeight());
+        if (hitObjectNumber != -1) {
+            gameOver();
+        }
+    }
+    
+    public void gameOver() {
+        System.out.println("GAME OVER!!!!");
     }
     
     public int getLevelWidth() {

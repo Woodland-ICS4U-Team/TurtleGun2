@@ -61,13 +61,31 @@ public class Obstacle {
     
     public void moveObstacles(int distance) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
-            if (obstacleVisible[i] == true) {
+            if (obstacleVisible[i]) {
                 obstacleX[i] -= distance;
                 if (obstacleX[i] < -OBSTACLE_WIDTH) {
                     obstacleVisible[i] = false;
                 }
             }
         }
+    }
+    
+    //Returns -1 if there is not collision, and the object number if it hit one
+    public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
+        for (int i = 0; i < MAX_OBSTACLES; i ++) {
+            if (obstacleVisible[i]) {
+                //If the object is not outside, it must have hit the obstacle
+                if ((obstacleX[i] > thingX + thingWidth) && (obstacleX[i] + OBSTACLE_WIDTH < thingX)) {
+                    if ((obstacleX[i] + OBSTACLE_WIDTH < thingX) && (obstacleY[i] > thingY)) {
+                        if (obstacleY[i] + OBSTACLE_HEIGHT < thingY) {
+                            System.out.println("SOMETHING HIT SOMETHING!!");
+                            return i;
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
     }
     
 //----------------------------------------------------------------------------------------

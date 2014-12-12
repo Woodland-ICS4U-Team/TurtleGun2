@@ -4,13 +4,15 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Turtle {
+    private int STARTING_X = 100;
+    
     
     private int distance;
     private String turtleImage = "turtleImage.png";
     private int width;
     private int height;
-    private int x = 250;
-    private int y = 260;
+    private int x = STARTING_X;
+    private int y = Main.getLevelHeight() / 2;
     private Image image;
     
     
@@ -20,7 +22,7 @@ public class Turtle {
         image = ii.getImage();
         width = image.getWidth(null);
         height = image.getHeight(null);
-     
+        y -= height / 2;
     }
     
     public Image getImage() {
@@ -33,6 +35,14 @@ public class Turtle {
     
     public int getY() {
         return y;
+    }
+    
+    public int getWidth() {
+        return width;
+    }
+    
+    public int getHeight() {
+        return height;
     }
     
     public int getDistance() {
