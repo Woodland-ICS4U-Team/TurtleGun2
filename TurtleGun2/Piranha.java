@@ -9,7 +9,7 @@ public class Piranha {
     private Image image;
     boolean visible;
     private int width, height;
-
+    private int numShots = 15;
     private final int BOARD_WIDTH = 1280;
     private final int MISSILE_SPEED = 2;
 
