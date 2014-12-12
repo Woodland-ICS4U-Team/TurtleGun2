@@ -3,56 +3,73 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class Obstacle {
-    
+    private Random number = new Random();;
     private int NUM_IMAGES = 3;
-    private int MAX_OBJECTS = 10;
-    private int STARTING_Y = 1000;
-    private int MAX_STARTING_X = 1000;
-    private int MIN_STARTING_X = 100;
-    private Image[] objectImages = new Image[NUM_IMAGES];
-    private int numObjects = 0;
-    //Object tables
-    private Image objectImage[] = new Image[MAX_OBJECTS];
-    private int objectX[] = new int[MAX_OBJECTS];
-    private int objectY[] = new int[MAX_OBJECTS];
-    private boolean objectVisible[] = new boolean [MAX_OBJECTS];
+    private int MAX_OBSTACLES = 10;
+    private int STARTING_X = 1300;
+    private int MAX_STARTING_Y = 700;
+    private int MIN_STARTING_Y = 20;
+    private int numobstacles = 0;
+    
+    //obstacle tables
+    private Image obstacleImage[] = new Image[MAX_OBSTACLES];
+    private int obstacleX[] = new int[MAX_OBSTACLES];
+    private int obstacleY[] = new int[MAX_OBSTACLES];
+    private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
+    private Image[] obstacleImages = new Image[NUM_IMAGES];
     
     public Obstacle() {
-        //ImageIcon one = new ImageIcon(this.getClass().getResource("narwal.png"));
-        //objectImages[0] = one.getImage();
-        //ImageIcon two = new ImageIcon(this.getClass().getResource("narwal.png"));
-        //objectImages[1] = two.getImage();
-        //ImageIcon three = new ImageIcon(this.getClass().getResource("narwal.png"));
-        //objectImages[2] = three.getImage();
+        ImageIcon one = new ImageIcon(this.getClass().getResource("narwhal.png"));
+        obstacleImages[0] = one.getImage();
+        ImageIcon two = new ImageIcon(this.getClass().getResource("narwhal.png"));
+        obstacleImages[1] = two.getImage();
+        ImageIcon three = new ImageIcon(this.getClass().getResource("narwhal.png"));
+        obstacleImages[2] = three.getImage();
     }
     
     public void addObstacle() {
-        boolean foundObstacle = false;
-        for (int i = 0; (i < MAX_OBJECTS) && (foundObstacle == false); i ++) {
-            if (objectVisible[MAX_OBJECTS]) {
-                Random number = new Random();
-                objectVisible[i] = true;
-                objectImage[i] = objectImages[number.nextInt(NUM_IMAGES)];
-                objectX[i] = number.nextInt(MAX_STARTING_X - MIN_STARTING_X) + MIN_STARTING_X;
-                objectY[i] = STARTING_Y;
-                foundObstacle = true;
+        if (number.nextInt(200) == 1) {//MAKE IT A VARIABLE TO UP THE DIFFICULTY
+            for (int i = 0; (i < MAX_OBSTACLES); i ++) {
+                if (!obstacleVisible[i]) {
+                    obstacleVisible[i] = true;
+                    obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
+                    obstacleY[i] = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
+                    obstacleX[i] = STARTING_X;
+                    System.out.println("Added obstacle at " + obstacleX[i] + ", " + obstacleY[i]);
+                    return;
+                }
             }
         }
     }
     
-    public void moveObjects(int distance) {
-        for (int i = 0; i < MAX_OBJECTS; i ++) {
-            if (objectVisible[i] == true) {
-                objectX[i] -= distance;
+    public void moveObstacles(int distance) {
+        for (int i = 0; i < MAX_OBSTACLES; i ++) {
+            if (obstacleVisible[i] == true) {
+                obstacleX[i] -= distance;
+                if (obstacleX[i] < -100) {
+                    obstacleVisible[i] = false;
+                }
             }
         }
     }
     
-    public int getX(int objectNumber) {
-        return objectX[objectNumber];
+    public Image getImage(int obstacleNumber) {
+        return obstacleImage[obstacleNumber];
     }
     
-    public int getY(int objectNumber) {
-        return objectY[objectNumber];
+    public int getNumObstacles() {
+        return MAX_OBSTACLES;
+    }
+    
+    public boolean getVisible(int obstacleNumber) {
+        return obstacleVisible[obstacleNumber];
+    }
+    
+    public int getX(int obstacleNumber) {
+        return obstacleX[obstacleNumber];
+    }
+    
+    public int getY(int obstacleNumber) {
+        return obstacleY[obstacleNumber];
     }
 }
