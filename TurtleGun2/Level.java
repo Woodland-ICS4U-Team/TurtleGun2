@@ -13,16 +13,13 @@ public class Level extends JPanel {
     private Obstacle obstacles = new Obstacle();
     private Piranha nemo = new Piranha(5, 8);
     private int levelSpeed = 5;
-    private int levelWidth;
-    private int levelHeight;
+
     
     public Level() {
-        addKeyListener(new KeyListener());
+        addKeyListener(new KeyListener(franklin));
         setFocusable(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
-        levelWidth = getWidth();
-        levelHeight = getHeight();
     }
     
     public void paint(Graphics g) {
@@ -49,13 +46,5 @@ public class Level extends JPanel {
         narwhal.move();
         obstacles.addObstacle();
         obstacles.moveObstacles(levelSpeed);
-    }
-    
-    public int getLevelWidth() {
-        return levelWidth;
-    }
-    
-    public int getLevelHeight() {
-        return levelHeight;
     }
 }

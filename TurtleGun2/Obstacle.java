@@ -13,8 +13,8 @@ public class Obstacle {
     private int MAX_OBSTACLES = 10;
     private int OBSTACLE_WIDTH = 50;
     private int OBSTACLE_HEIGHT = 20;
-    private int STARTING_X = Main.getLevelWidth();
-    private int MAX_STARTING_Y = Main.getLevelHeight();
+    private int STARTING_X = TurtleGun2.getLevelWidth();
+    private int MAX_STARTING_Y = TurtleGun2.getLevelHeight();
     private int MIN_STARTING_Y = OBSTACLE_HEIGHT;
     
     //obstacle tables
