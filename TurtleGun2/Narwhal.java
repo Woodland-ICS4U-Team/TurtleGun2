@@ -8,7 +8,7 @@ public class Narwhal {
     private int height;
     private int x = 100;
     private int y = 150;
-    private int z = 50;
+    private double z = 0;
     private Image image;
 
     public Narwhal() {
@@ -33,9 +33,9 @@ public class Narwhal {
     public int getDistance() {
         return distance;
     }
+    
     public void move() {
-        y = (int)(100 * Math.sin(z));
-        z++;
-        System.out.println("z equals" + z);
+        y = (int)(20 * Math.sin(z)) + 360;
+        z += .1;
     }
 }

@@ -1,11 +1,17 @@
-
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.*;
 
 public class GameTimer extends TimerTask {
-    Level level = new Level();
+    
+    Level level;
+    
+    public GameTimer(Level temp) {
+        level = temp;
+    }
     
     public void run() {
         level.run();
-        System.out.println("Run run");
+        level.repaint();
     }
 }
