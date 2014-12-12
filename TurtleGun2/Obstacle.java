@@ -40,7 +40,11 @@ public class Obstacle {
         ImageIcon three = new ImageIcon(this.getClass().getResource("narwhal.png"));
         obstacleImages[2] = three.getImage();
     }
-    
+
+//----------------------------------------------------------------------------------------
+//-----------------------------------------methods----------------------------------------
+//----------------------------------------------------------------------------------------
+
     public void addObstacle() {
         if (number.nextInt(obstacleProbability) == 1) {
             for (int i = 0; (i < MAX_OBSTACLES); i ++) {
