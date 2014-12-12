@@ -3,15 +3,19 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class Obstacle {
-    private Random number = new Random();;
+
+//----------------------------------------------------------------------------------------
+//----------------------------------------variables---------------------------------------
+//----------------------------------------------------------------------------------------
+    //constants
+    private int STARTING_OBSTACLE_PROBABILITY = 200;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
     private int OBSTACLE_WIDTH = 50;
     private int OBSTACLE_HEIGHT = 20;
     private int STARTING_X = Main.getLevelWidth();
-    private int MAX_STARTING_Y = Main.getLevelHeight() - 40;
-    private int MIN_STARTING_Y = 40;
-    private int numobstacles = 0;
+    private int MAX_STARTING_Y = Main.getLevelHeight();
+    private int MIN_STARTING_Y = OBSTACLE_HEIGHT;
     
     //obstacle tables
     private Image obstacleImage[] = new Image[MAX_OBSTACLES];
@@ -20,6 +24,14 @@ public class Obstacle {
     private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
     private Image[] obstacleImages = new Image[NUM_IMAGES];
     
+    //internal variables
+    private Random number = new Random();
+    private int obstacleProbability = STARTING_OBSTACLE_PROBABILITY;
+
+//----------------------------------------------------------------------------------------
+//---------------------------------------constructor--------------------------------------
+//----------------------------------------------------------------------------------------
+ 
     public Obstacle() {
         ImageIcon one = new ImageIcon(this.getClass().getResource("narwhal.png"));
         obstacleImages[0] = one.getImage();
@@ -30,14 +42,13 @@ public class Obstacle {
     }
     
     public void addObstacle() {
-        if (number.nextInt(200) == 1) {//MAKE IT A VARIABLE TO UP THE DIFFICULTY
+        if (number.nextInt(obstacleProbability) == 1) {
             for (int i = 0; (i < MAX_OBSTACLES); i ++) {
                 if (!obstacleVisible[i]) {
                     obstacleVisible[i] = true;
                     obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
                     obstacleY[i] = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
                     obstacleX[i] = STARTING_X;
-                    System.out.println("Added obstacle at " + obstacleX[i] + ", " + obstacleY[i]);
                     return;
                 }
             }
@@ -48,12 +59,16 @@ public class Obstacle {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i] == true) {
                 obstacleX[i] -= distance;
-                if (obstacleX[i] < -100) {
+                if (obstacleX[i] < -OBSTACLE_WIDTH) {
                     obstacleVisible[i] = false;
                 }
             }
         }
     }
+    
+//----------------------------------------------------------------------------------------
+//-----------------------------------------getters----------------------------------------
+//----------------------------------------------------------------------------------------
     
     public Image getImage(int obstacleNumber) {
         return obstacleImage[obstacleNumber];
