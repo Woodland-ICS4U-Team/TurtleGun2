@@ -6,7 +6,7 @@ public class Narwhal {
     private String narwhalImage = "narwhal.png";
     private int width;
     private int height;
-    private int x = 100;
+    private int x = -75;
     private int y = 150;
     private double z = 0;
     private Image image;

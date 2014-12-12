@@ -9,8 +9,8 @@ public class Turtle {
     private String turtleImage = "turtleImage.png";
     private int width;
     private int height;
-    private int x = 400;
-    private int y = 150;
+    private int x = 250;
+    private int y = 260;
     private Image image;
     
     
