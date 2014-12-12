@@ -6,9 +6,11 @@ public class Obstacle {
     private Random number = new Random();;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
-    private int STARTING_X = 1300;
-    private int MAX_STARTING_Y = 700;
-    private int MIN_STARTING_Y = 20;
+    private int OBSTACLE_WIDTH = 50;
+    private int OBSTACLE_HEIGHT = 20;
+    private int STARTING_X = Main.getLevelWidth();
+    private int MAX_STARTING_Y = Main.getLevelHeight() - 40;
+    private int MIN_STARTING_Y = 40;
     private int numobstacles = 0;
     
     //obstacle tables
