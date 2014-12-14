@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 import java.util.*;
 
 public class TurtleGun2 extends JFrame{
-    private static int FRAMES_PER_SECOND = 30;
+    private int FRAMES_PER_SECOND = 30;
     private static int LEVEL_WIDTH = 1280;
     private static int LEVEL_HEIGHT = 720;
     Level stage = new Level();
@@ -11,12 +11,9 @@ public class TurtleGun2 extends JFrame{
     Timer gameSchedule = new Timer();
 
     public TurtleGun2() {
-        TurtleGun2 frame = new TurtleGun2();
-        gameSchedule.schedule(frame.getTimer(), 0, 1000 / FRAMES_PER_SECOND);
+        gameSchedule.schedule(timer, 0, 1000 / FRAMES_PER_SECOND);
+        JFrame frame = new JFrame("Turtle Gun II");
         frame.add(stage);
-    }
-    
-    public static void main() {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(LEVEL_WIDTH, LEVEL_HEIGHT);
@@ -24,9 +21,11 @@ public class TurtleGun2 extends JFrame{
         frame.setResizable(false);
         frame.setVisible(true);
     }
-    public GameTimer getTimer() {
-        return timer;
+    
+    public static void main(String [] args) {
+        new TurtleGun2();
     }
+    
     public static int getLevelHeight() {
         return LEVEL_HEIGHT;
     }

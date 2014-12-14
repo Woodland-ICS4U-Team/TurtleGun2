@@ -2,13 +2,14 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Narwhal {
-    private static int distance;
-    private static String narwhalImage = "narwhal.png";
-    private static int width;
-    private static int height;
-    private static int x = 100;
-    private static int y = 150;
-    private static Image image;
+    private int distance;
+    private String narwhalImage = "narwhal.png";
+    private int width;
+    private int height;
+    private int x = -75;
+    private int y = 150;
+    private double z = 0;
+    private Image image;
 
     public Narwhal() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(narwhalImage));
@@ -17,20 +18,24 @@ public class Narwhal {
         height = image.getHeight(null);
     }
 
-    public static Image getImage() {
+    public Image getImage() {
         return image;
     }
     
-    public static int getX() {
+    public int getX() {
         return x;
     }
     
-    public static int getY() {
+    public int getY() {
         return y;
     }
     
-    public static int getDistance() {
+    public int getDistance() {
         return distance;
     }
     
+    public void move() {
+        y = (int)(260 * Math.sin(z)) + 250;
+        z += .1;
+    }
 }
