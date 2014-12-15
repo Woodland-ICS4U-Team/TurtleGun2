@@ -11,6 +11,7 @@ public class Obstacle {
     private int STARTING_OBSTACLE_PROBABILITY = 10;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
+    private int MIN_OBSTACLE_DISTANCE = 300;
     private int OBSTACLE_WIDTH = 100;
     private int OBSTACLE_HEIGHT = 100;
     private int STARTING_X = TurtleGun2.getLevelWidth();
@@ -88,6 +89,10 @@ public class Obstacle {
             }
         }
         return -1;
+    }
+    
+    private boolean canPlaceObstacle(int x, int y) {
+        return true;
     }
     
 //----------------------------------------------------------------------------------------
