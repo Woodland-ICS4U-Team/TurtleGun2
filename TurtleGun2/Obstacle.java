@@ -80,8 +80,8 @@ public class Obstacle {
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i]) {
-                if ((obstacleX[i] < thingX + thingWidth) && (obstacleX[i] + OBSTACLE_WIDTH > thingX)) {
-                    if ((obstacleY[i] < thingY + thingHeight) && (obstacleY[i] + OBSTACLE_WIDTH > thingY)) {
+                if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 10 + OBSTACLE_WIDTH > thingX)) {
+                    if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 10 + OBSTACLE_WIDTH > thingY)) {
                         return i;
                     }
                 }
