@@ -42,7 +42,7 @@ public class Turtle {
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-           
+            
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             y = y + 10;
