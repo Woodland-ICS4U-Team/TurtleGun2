@@ -15,7 +15,7 @@ public class Turtle {
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
     
-    
+    //image costructor for turte    
     public Turtle() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(turtleImage));
         //turtleImage = (new ImageComponent("turtleImage.png"));
@@ -28,7 +28,7 @@ public class Turtle {
     public Image getImage() {
         return image;
     }
-    
+    //image coordinates
     public int getX() {
         return x;
     }
@@ -44,21 +44,21 @@ public class Turtle {
     public int getHeight() {
         return height;
     }
-    
+    //Gets image from narwhal
     public int getDistance() {
         return distance;
     }
-    
+    //Key listener to guide the turtle
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
             
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
-            y = y + 10;
+            y = y - 10;
         } else if (keyCode == KeyEvent.VK_RIGHT) {
             System.out.println("Down pressed");
-            y = y - 10;
+            y = y + 10;
         }
     }
 }
