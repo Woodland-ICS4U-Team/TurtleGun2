@@ -48,11 +48,14 @@ public class Turtle {
     public int getDistance() {
         return distance;
     }
-    
+    public void fire() {
+         System.out.println("firing");
+         new Piranha(getX(), getY());
+    }
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-            
+            fire();
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             y = y + 10;

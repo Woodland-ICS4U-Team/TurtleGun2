@@ -40,7 +40,11 @@ public class Level extends JPanel {
                graphics.drawImage(obstacles.getImage(i), obstacles.getX(i), obstacles.getY(i), this);
             }
         }
-        
+        for (int x = 0; x < nemo.getNumPiranahs(); x++) {
+            if (nemo.getVisible(x)) {
+                graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
+            }
+        }
         
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
