@@ -47,6 +47,7 @@ public class Level extends JPanel {
     }
     
     public void run() {
+        franklin.move();
         narwhal.move();
         obstacles.addObstacle();
         obstacles.moveObstacles(levelSpeed);
