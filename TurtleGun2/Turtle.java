@@ -25,7 +25,9 @@ public class Turtle {
     }
     
     public void move() {
-        y += speed;
+        if ((y + speed + width < TurtleGun2.getLevelHeight()) && (y + speed > 0)) {
+            y += speed;
+        }
     }
     
     public Image getImage() {
