@@ -5,8 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Turtle {
     private int STARTING_X = 200;
-    
-    
+    private int speed = 0;
     private int distance;
     private String turtleImage = "Turtle.png";
     private int width;
@@ -48,6 +47,13 @@ public class Turtle {
     public int getDistance() {
         return distance;
     }
+    
+    public void move() {
+        if ((y + speed + width < TurtleGun2.getLevelHeight()) && (y + speed > 0)) {
+            y += speed;
+        }
+    }
+    
     //Key listener to guide the turtle
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
@@ -55,10 +61,23 @@ public class Turtle {
             
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
-            y = y - 10;
+            speed = -10;
         } else if (keyCode == KeyEvent.VK_RIGHT) {
             System.out.println("Down pressed");
-            y = y + 10;
+            speed = 10;
+        }
+    }
+    
+    public void keyReleased(int keyCode) {
+        if (keyCode == KeyEvent.VK_SPACE) {
+            System.out.println("Space pressed");
+            
+        } else if (keyCode == KeyEvent.VK_LEFT) {
+            System.out.println("Up pressed");
+            speed = 0;
+        } else if (keyCode == KeyEvent.VK_RIGHT) {
+            System.out.println("Down pressed");
+            speed = 0;
         }
     }
 }
