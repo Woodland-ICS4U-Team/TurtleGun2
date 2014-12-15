@@ -11,6 +11,7 @@ public class Obstacle {
     private int STARTING_OBSTACLE_PROBABILITY = 10;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
+    private int MIN_OBSTACLE_DISTANCE = 300;
     private int OBSTACLE_WIDTH = 100;
     private int OBSTACLE_HEIGHT = 100;
     private int STARTING_X = TurtleGun2.getLevelWidth();
@@ -80,14 +81,18 @@ public class Obstacle {
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i]) {
-                if ((obstacleX[i] < thingX + thingWidth) && (obstacleX[i] + OBSTACLE_WIDTH > thingX)) {
-                    if ((obstacleY[i] < thingY + thingHeight) && (obstacleY[i] + OBSTACLE_WIDTH > thingY)) {
+                if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 10 + OBSTACLE_WIDTH > thingX)) {
+                    if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 10 + OBSTACLE_WIDTH > thingY)) {
                         return i;
                     }
                 }
             }
         }
         return -1;
+    }
+    
+    private boolean canPlaceObstacle(int x, int y) {
+        return true;
     }
     
 //----------------------------------------------------------------------------------------

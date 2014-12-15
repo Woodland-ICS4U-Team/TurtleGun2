@@ -8,9 +8,13 @@ public class KeyListener extends KeyAdapter {
     //private Narwhal narwhal = new Narwhal();
     //private Piranha nemo = new Piranha(5, 8);
     public void keyPressed(KeyEvent e) {
-        System.out.println("Key Pressed");
         franklin.keyPressed(e.getKeyCode());
     }
+    
+    public void keyReleased(KeyEvent e) {
+        franklin.keyReleased(e.getKeyCode());
+    }
+    
     public KeyListener(Turtle t) {
         franklin = t;
     }
