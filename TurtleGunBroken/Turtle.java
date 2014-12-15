@@ -8,7 +8,7 @@ public class Turtle {
     
     
     private int distance;
-    private String turtleImage = "Turtle.png";
+    private String turtleImage = "turtleImage.png";
     private int width;
     private int height;
     private int x = STARTING_X;
@@ -52,7 +52,7 @@ public class Turtle {
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-            
+           
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             y = y + 10;

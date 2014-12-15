@@ -8,11 +8,11 @@ public class Obstacle {
 //----------------------------------------variables---------------------------------------
 //----------------------------------------------------------------------------------------
     //constants
-    private int STARTING_OBSTACLE_PROBABILITY = 10;
+    private int STARTING_OBSTACLE_PROBABILITY = 200;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
-    private int OBSTACLE_WIDTH = 100;
-    private int OBSTACLE_HEIGHT = 100;
+    private int OBSTACLE_WIDTH = 50;
+    private int OBSTACLE_HEIGHT = 20;
     private int STARTING_X = TurtleGun2.getLevelWidth();
     private int MAX_STARTING_Y = TurtleGun2.getLevelHeight();
     private int MIN_STARTING_Y = OBSTACLE_HEIGHT;
@@ -33,11 +33,11 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
  
     public Obstacle() {
-        ImageIcon one = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
+        ImageIcon one = new ImageIcon(this.getClass().getResource("narwhal.png"));
         obstacleImages[0] = one.getImage();
-        ImageIcon two = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
+        ImageIcon two = new ImageIcon(this.getClass().getResource("narwhal.png"));
         obstacleImages[1] = two.getImage();
-        ImageIcon three = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
+        ImageIcon three = new ImageIcon(this.getClass().getResource("narwhal.png"));
         obstacleImages[2] = three.getImage();
     }
 
@@ -59,12 +59,6 @@ public class Obstacle {
         }
     }
     
-    public void removeObstacle(int obstacleNumber) {
-        if ((obstacleNumber >= 0) && (obstacleNumber< MAX_OBSTACLES)) {
-            obstacleVisible[obstacleNumber] = false;
-        }
-    }
-    
     public void moveObstacles(int distance) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i]) {
@@ -80,9 +74,13 @@ public class Obstacle {
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i]) {
-                if ((obstacleX[i] < thingX + thingWidth) && (obstacleX[i] + OBSTACLE_WIDTH > thingX)) {
-                    if ((obstacleY[i] < thingY + thingHeight) && (obstacleY[i] + OBSTACLE_WIDTH > thingY)) {
-                        return i;
+                //If the object is not outside, it must have hit the obstacle
+                if ((obstacleX[i] > thingX + thingWidth) && (obstacleX[i] + OBSTACLE_WIDTH < thingX)) {
+                    if ((obstacleX[i] + OBSTACLE_WIDTH < thingX) && (obstacleY[i] > thingY)) {
+                        if (obstacleY[i] + OBSTACLE_HEIGHT < thingY) {
+                            System.out.println("SOMETHING HIT SOMETHING!!");
+                            return i;
+                        }
                     }
                 }
             }
