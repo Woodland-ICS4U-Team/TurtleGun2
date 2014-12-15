@@ -14,7 +14,6 @@ public class Turtle {
     private int x = STARTING_X;
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
-    public int turtleHit = 0;
     
     //image costructor for turte    
     public Turtle() {
@@ -49,7 +48,6 @@ public class Turtle {
     public int getDistance() {
         return distance;
     }
-    
     //Key listener to guide the turtle
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
