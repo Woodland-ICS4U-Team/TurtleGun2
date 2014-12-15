@@ -8,7 +8,7 @@ public class Turtle {
     
     
     private int distance;
-    private String turtleImage = "turtleImage.png";
+    private String turtleImage = "Turtle.png";
     private int width;
     private int height;
     private int x = STARTING_X;
