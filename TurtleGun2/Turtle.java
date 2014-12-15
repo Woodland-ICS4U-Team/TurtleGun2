@@ -4,7 +4,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Turtle {
-    private int STARTING_X = 100;
+    private int STARTING_X = 200;
     
     
     private int distance;

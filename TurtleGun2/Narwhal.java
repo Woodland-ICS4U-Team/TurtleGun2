@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 
 public class Narwhal {
     private int distance;
-    private String narwhalImage = "narwhal.png";
+    private String narwhalImage = "Narwhal.png";
     private int width;
     private int height;
     private int x = -75;
