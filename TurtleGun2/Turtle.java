@@ -14,6 +14,7 @@ public class Turtle {
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
     private int lives = 3;
+    Piranha fish;
     
     //image costructor for turte    
     public Turtle() {
