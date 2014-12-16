@@ -30,7 +30,6 @@ public class Level extends JPanel {
         super.paint(g);
         Graphics2D graphics = (Graphics2D)g;
         
-        graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
         graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
         graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
         
@@ -45,7 +44,7 @@ public class Level extends JPanel {
                 graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
             }
         }
-        
+        graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
