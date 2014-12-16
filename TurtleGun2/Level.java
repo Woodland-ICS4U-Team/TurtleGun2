@@ -32,7 +32,7 @@ public class Level extends JPanel {
         
         graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
         graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
-        graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
+        //graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
         
         //Draw all of the obstacles if they are visible
         for (int i = 0; i < obstacles.getNumObstacles(); i++) {
@@ -42,7 +42,7 @@ public class Level extends JPanel {
         }
         for (int x = 0; x < nemo.getNumPiranahs(); x++) {
             if (nemo.getVisible(x)) {
-                graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
+                graphics.drawImage(nemo.getImage(), nemo.getX(x), nemo.getY(x), this);
             }
         }
         
