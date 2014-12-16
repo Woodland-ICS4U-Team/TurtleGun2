@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 public class Turtle {
     private int STARTING_X = 200;
     private int speed = 0;
-    private int distance;
+    private int distance; //distance from back narwhal
     private String turtleImage = "Turtle.png";
     private int width;
     private int height;
@@ -14,7 +14,7 @@ public class Turtle {
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
     
-    //image costructor for turte    
+    //image constructor for turtle    
     public Turtle() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(turtleImage));
         //turtleImage = (new ImageComponent("turtleImage.png"));
@@ -43,7 +43,7 @@ public class Turtle {
     public int getHeight() {
         return height;
     }
-    //Gets image from narwhal
+    //Gets distance from narwhal
     public int getDistance() {
         return distance;
     }

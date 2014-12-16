@@ -16,7 +16,6 @@ public class Narwhal {
     public Narwhal() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(narwhalImage));
         image = ii.getImage();
-        image = Toolkit.getDefaultToolkit().getImage(narwhalImage);
         width = image.getWidth(null);
         height = image.getHeight(null);
     }
@@ -42,7 +41,5 @@ public class Narwhal {
         z += .1;
        
     }
-    public void rotate(){
-        
-    }
+   
 }
