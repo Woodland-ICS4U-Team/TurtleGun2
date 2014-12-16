@@ -8,7 +8,7 @@ public class Obstacle {
 //----------------------------------------variables---------------------------------------
 //----------------------------------------------------------------------------------------
     //constants
-    private int STARTING_OBSTACLE_PROBABILITY = 10;
+    private int STARTING_OBSTACLE_PROBABILITY = 20;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
     private int MIN_OBSTACLE_DISTANCE = 300;
@@ -23,6 +23,7 @@ public class Obstacle {
     private int obstacleX[] = new int[MAX_OBSTACLES];
     private int obstacleY[] = new int[MAX_OBSTACLES];
     private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
+    private boolean obstacleHit[] = new boolean [MAX_OBSTACLES];
     private Image[] obstacleImages = new Image[NUM_IMAGES];
     
     //internal variables
@@ -50,11 +51,17 @@ public class Obstacle {
         if (number.nextInt(obstacleProbability) == 1) {
             for (int i = 0; (i < MAX_OBSTACLES); i ++) {
                 if (!obstacleVisible[i]) {
-                    obstacleVisible[i] = true;
-                    obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
-                    obstacleY[i] = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
-                    obstacleX[i] = STARTING_X;
-                    return;
+                    int x = STARTING_X;
+                    int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
+                    if (canPlaceObstacle(x, y)) {
+                        System.out.println("added obj");
+                        obstacleVisible[i] = true;
+                        obstacleHit[i] = false;
+                        obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
+                        obstacleY[i] = y;
+                        obstacleX[i] = x;
+                        return;
+                    }
                 }
             }
         }
@@ -62,7 +69,7 @@ public class Obstacle {
     
     public void removeObstacle(int obstacleNumber) {
         if ((obstacleNumber >= 0) && (obstacleNumber< MAX_OBSTACLES)) {
-            obstacleVisible[obstacleNumber] = false;
+            obstacleHit[obstacleNumber] = true;
         }
     }
     
@@ -80,7 +87,7 @@ public class Obstacle {
     //Returns -1 if there is not collision, and the object number if it hit one
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
-            if (obstacleVisible[i]) {
+            if (!obstacleHit[i]) {
                 if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 10 + OBSTACLE_WIDTH > thingX)) {
                     if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 10 + OBSTACLE_WIDTH > thingY)) {
                         return i;
@@ -92,6 +99,20 @@ public class Obstacle {
     }
     
     private boolean canPlaceObstacle(int x, int y) {
+        int objX;
+        int objY;
+        double distance;
+        for (int i = 0; i < MAX_OBSTACLES; i++) {
+            if (obstacleVisible[i] == true) {
+                objX = obstacleX[i];
+                objY = obstacleY[i];
+                distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
+                if (distance < MIN_OBSTACLE_DISTANCE) {
+                    return false;
+                }
+            }
+        }
+        System.out.println("can place obstacle");
         return true;
     }
     
