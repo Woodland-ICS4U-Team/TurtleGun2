@@ -5,8 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Turtle {
     private int STARTING_X = 200;
-    
-    
+    private int speed = 0;
     private int distance;
     private String turtleImage = "Turtle.png";
     private int width;
@@ -15,7 +14,7 @@ public class Turtle {
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
     
-    
+    //image costructor for turte    
     public Turtle() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(turtleImage));
         //turtleImage = (new ImageComponent("turtleImage.png"));
@@ -28,7 +27,7 @@ public class Turtle {
     public Image getImage() {
         return image;
     }
-    
+    //image coordinates
     public int getX() {
         return x;
     }
@@ -44,24 +43,41 @@ public class Turtle {
     public int getHeight() {
         return height;
     }
-    
+    //Gets image from narwhal
     public int getDistance() {
         return distance;
     }
-    public void fire() {
-         System.out.println("firing");
-         new Piranha(getX(), getY());
+    
+    public void move() {
+        if ((y + speed + width < TurtleGun2.getLevelHeight()) && (y + speed > 0)) {
+            y += speed;
+        }
     }
+    
+    //Key listener to guide the turtle
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-            fire();
+            
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
-            y = y + 10;
+            speed = -10;
         } else if (keyCode == KeyEvent.VK_RIGHT) {
             System.out.println("Down pressed");
-            y = y - 10;
+            speed = 10;
+        }
+    }
+    
+    public void keyReleased(int keyCode) {
+        if (keyCode == KeyEvent.VK_SPACE) {
+            System.out.println("Space pressed");
+            
+        } else if (keyCode == KeyEvent.VK_LEFT) {
+            System.out.println("Up pressed");
+            speed = 0;
+        } else if (keyCode == KeyEvent.VK_RIGHT) {
+            System.out.println("Down pressed");
+            speed = 0;
         }
     }
 }
