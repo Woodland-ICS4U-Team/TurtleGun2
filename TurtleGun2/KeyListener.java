@@ -4,11 +4,20 @@ import java.awt.event.KeyEvent;
 
 public class KeyListener extends KeyAdapter {
     
-    private Turtle franklin = new Turtle();
-    private Narwhal narwhal = new Narwhal();
-    private Piranha nemo = new Piranha(5, 8);
+    private Turtle franklin;
+    private Level level;
+    //private Narwhal narwhal = new Narwhal();
+    //private Piranha nemo = new Piranha(5, 8);
     public void keyPressed(KeyEvent e) {
-        System.out.println("Key Pressed");
-        franklin.keyPressed(e.getKeyCode());
+        franklin.keyPressed(e.getKeyCode(), level);
+    }
+    
+    public void keyReleased(KeyEvent e) {
+        franklin.keyReleased(e.getKeyCode());
+    }
+    
+    public KeyListener(Turtle t, Level l) {
+        franklin = t;
+        level = l;
     }
 }
