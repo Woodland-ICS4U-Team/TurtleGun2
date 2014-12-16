@@ -17,7 +17,7 @@ public class Piranha {
     private Image[] piranhaImages = new Image[15];
     private int piranhaX[] = new int[MAX_SHOTS];
     private int piranhaY[] = new int[MAX_SHOTS];
-    private int i = 1;
+    private int i = 0;
     public Piranha() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
@@ -55,9 +55,15 @@ public class Piranha {
             i++;
         }
     }
-    public void move() {
-        piranhaX[i] -= 1;
-        if (x > BOARD_WIDTH)
-            visible = false;
-    }
+    public void move(int speed) {
+
+        for (int i = 0; i < MAX_SHOTS; i++) {
+            if (piranhaVisible[i]) {
+                piranhaX[i] += speed;
+                if (piranhaX[i] > BOARD_WIDTH)
+                    piranhaVisible[i] = false;
+            }
+        }
+        
+    } 
 }

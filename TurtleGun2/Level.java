@@ -13,6 +13,7 @@ public class Level extends JPanel {
     private Obstacle obstacles = new Obstacle();
     private Piranha nemo = new Piranha();
     private int levelSpeed = 5;
+    private int piranhaSpeed = 12;
     private int levelWidth;
     private int levelHeight;
     private int hitObjectNumber = -1;
@@ -51,13 +52,14 @@ public class Level extends JPanel {
     
     public void addPiranha(int x, int y) {
         nemo.addPiranha(x, y);
-        
-        nemo.move();
+
+
     }
     
     public void run() {
         franklin.move();
         narwhal.move();
+        nemo.move(piranhaSpeed);
         obstacles.addObstacle();
         obstacles.moveObstacles(levelSpeed);
         hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);
