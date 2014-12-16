@@ -18,7 +18,7 @@ public class Level extends JPanel {
     private int hitObjectNumber = -1;
     
     public Level() {
-        addKeyListener(new KeyListener(franklin));
+        addKeyListener(new KeyListener(franklin, this));
         setFocusable(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
@@ -48,6 +48,10 @@ public class Level extends JPanel {
         
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+    }
+    
+    public void addPiranha(int x, int y) {
+        nemo.addPiranha(x, y);
     }
     
     public void run() {

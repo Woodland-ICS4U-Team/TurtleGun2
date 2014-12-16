@@ -14,11 +14,10 @@ public class Turtle {
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
     private int lives = 3;
-    Piranha fish;
+    Level level;
     
     //image costructor for turte    
     public Turtle() {
-        Piranha fish = new Piranha();
         ImageIcon ii = new ImageIcon(this.getClass().getResource(turtleImage));
         //turtleImage = (new ImageComponent("turtleImage.png"));
         image = ii.getImage();
@@ -67,10 +66,10 @@ public class Turtle {
     }
     
     //Key listener to guide the turtle
-    public void keyPressed(int keyCode) {
+    public void keyPressed(int keyCode, Level level) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-            fish.addPiranha(x + width / 2, y + height / 2);
+            level.addPiranha(x + width / 2, y + height / 2);
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             speed = -10;
