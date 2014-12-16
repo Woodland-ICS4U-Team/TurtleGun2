@@ -11,6 +11,4 @@ comment4.params=
 comment4.target=int\ getDistance()
 comment5.params=
 comment5.target=void\ move()
-comment6.params=
-comment6.target=void\ rotate()
-numComments=7
+numComments=6
