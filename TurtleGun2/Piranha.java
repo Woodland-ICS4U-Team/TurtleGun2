@@ -59,8 +59,9 @@ public class Piranha {
         return new Rectangle(x, y, width, height);
     }
     public void addPiranha(int x, int y) {
-        
-        
+        if (!piranhaVisible[i]) {
+            piranhaVisible[i] = true;
+        }
     }
     public void move() {
         x += MISSILE_SPEED;
