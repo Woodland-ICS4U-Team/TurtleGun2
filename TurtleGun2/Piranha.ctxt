@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=x\ y
-comment0.target=Piranha(int,\ int)
+comment0.params=
+comment0.target=Piranha()
 comment1.params=piranhaNumber
 comment1.target=boolean\ getVisible(int)
 comment10.params=
