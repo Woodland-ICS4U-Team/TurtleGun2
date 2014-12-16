@@ -34,7 +34,9 @@ public class Piranha {
     public int getY(int i) {
         return piranhaY[i];
     }
-
+    public int getNumPiranhas() {
+        return MAX_SHOTS;
+    }
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
@@ -54,7 +56,7 @@ public class Piranha {
         }
     }
     public void move() {
-        x += MISSILE_SPEED;
+        piranhaX[i] -= 1;
         if (x > BOARD_WIDTH)
             visible = false;
     }

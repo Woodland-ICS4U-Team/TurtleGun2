@@ -39,7 +39,7 @@ public class Level extends JPanel {
                graphics.drawImage(obstacles.getImage(i), obstacles.getX(i), obstacles.getY(i), this);
             }
         }
-        for (int x = 0; x < nemo.getNumPiranahs(); x++) {
+        for (int x = 0; x < nemo.getNumPiranhas(); x++) {
             if (nemo.getVisible(x)) {
                 graphics.drawImage(nemo.getImage(), nemo.getX(x), nemo.getY(x), this);
             }
@@ -51,6 +51,8 @@ public class Level extends JPanel {
     
     public void addPiranha(int x, int y) {
         nemo.addPiranha(x, y);
+        
+        nemo.move();
     }
     
     public void run() {
