@@ -57,8 +57,11 @@ public class Level extends JPanel {
         obstacles.moveObstacles(levelSpeed);
         hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);
         if (hitObjectNumber != -1) {
-            gameOver();
+            franklin.setLives(franklin.getLives() - 1);
             obstacles.removeObstacle(hitObjectNumber);
+            if (franklin.getLives() == 0) {
+                gameOver();
+            }
         }
     }
     
