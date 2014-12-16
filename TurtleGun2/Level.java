@@ -11,14 +11,14 @@ public class Level extends JPanel {
     private Turtle franklin = new Turtle();
     private Narwhal narwhal = new Narwhal();
     private Obstacle obstacles = new Obstacle();
-    private Piranha nemo = new Piranha(5, 8);
+    private Piranha nemo = new Piranha();
     private int levelSpeed = 5;
     private int levelWidth;
     private int levelHeight;
     private int hitObjectNumber = -1;
     
     public Level() {
-        addKeyListener(new KeyListener(franklin));
+        addKeyListener(new KeyListener(franklin, this));
         setFocusable(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
@@ -50,6 +50,10 @@ public class Level extends JPanel {
         g.dispose();
     }
     
+    public void addPiranha(int x, int y) {
+        nemo.addPiranha(x, y);
+    }
+    
     public void run() {
         franklin.move();
         narwhal.move();
@@ -57,8 +61,11 @@ public class Level extends JPanel {
         obstacles.moveObstacles(levelSpeed);
         hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);
         if (hitObjectNumber != -1) {
-            gameOver();
+            franklin.setLives(franklin.getLives() - 1);
             obstacles.removeObstacle(hitObjectNumber);
+            if (franklin.getLives() == 0) {
+                gameOver();
+            }
         }
     }
     

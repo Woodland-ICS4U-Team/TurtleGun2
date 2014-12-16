@@ -16,17 +16,9 @@ public class Piranha {
     private boolean piranhaVisible[] = new boolean[14];
     private Image[] piranhaImages = new Image[14];
     private int i = 0;
-    public Piranha(int x, int y) {
-        
+    public Piranha() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
-        visible = true;
-        width = image.getWidth(null);
-        height = image.getHeight(null);
-        piranhaVisible[i] = visible;
-        i++;
-        this.x = x;
-        this.y = y;
     }
     public boolean getVisible(int piranhaNumber) {
         return piranhaVisible[piranhaNumber];
@@ -59,8 +51,9 @@ public class Piranha {
         return new Rectangle(x, y, width, height);
     }
     public void addPiranha(int x, int y) {
-        
-        
+        if (!piranhaVisible[i]) {
+            piranhaVisible[i] = true;
+        }
     }
     public void move() {
         x += MISSILE_SPEED;

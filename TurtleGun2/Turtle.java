@@ -13,6 +13,8 @@ public class Turtle {
     private int x = STARTING_X;
     private int y = TurtleGun2.getLevelHeight() / 2;
     private Image image;
+    private int lives = 3;
+    Level level;
     
     //image constructor for turtle    
     public Turtle() {
@@ -27,7 +29,16 @@ public class Turtle {
     public Image getImage() {
         return image;
     }
-    //image coordinates
+    
+    public void setLives(int newLives) {
+        lives = newLives;
+        x -= 50;
+    }
+    
+    public int getLives() {
+        return lives;
+    }
+    
     public int getX() {
         return x;
     }
@@ -55,10 +66,10 @@ public class Turtle {
     }
     
     //Key listener to guide the turtle
-    public void keyPressed(int keyCode) {
+    public void keyPressed(int keyCode, Level level) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-            
+            level.addPiranha(x + width / 2, y + height / 2);
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             speed = -10;
@@ -70,8 +81,7 @@ public class Turtle {
     
     public void keyReleased(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
-            System.out.println("Space pressed");
-            
+
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             speed = 0;
