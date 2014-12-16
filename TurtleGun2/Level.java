@@ -11,6 +11,7 @@ public class Level extends JPanel {
     private Turtle franklin = new Turtle();
     private Narwhal narwhal = new Narwhal();
     private Obstacle obstacles = new Obstacle();
+    private Piranha nemo = new Piranha();
     private int levelSpeed = 5;
     private int levelWidth;
     private int levelHeight;
@@ -41,12 +42,16 @@ public class Level extends JPanel {
         }
         for (int x = 0; x < nemo.getNumPiranahs(); x++) {
             if (nemo.getVisible(x)) {
-                graphics.drawImage(nemo.getImage(), franklin.getX(), franklin.getY(), this);
+                graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
             }
         }
         
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+    }
+    
+    public void addPiranha(int x, int y) {
+        nemo.addPiranha(x, y);
     }
     
     public void run() {
