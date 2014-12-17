@@ -15,9 +15,11 @@ public class Narwhal {
     // Narwhal image constructor
     public Narwhal() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(narwhalImage));
+        image = Toolkit.getDefaultToolkit().getImage("Duke_Blocks.gif");
         image = ii.getImage();
         width = image.getWidth(null);
         height = image.getHeight(null);
+        System.out.println("Width is " + width + " height is " + height);
     }
 
     public Image getImage() {
@@ -38,8 +40,7 @@ public class Narwhal {
     //Sin fuction narwhal to move
     public void move() {
         y = (int)(260 * Math.sin(z)) + 250;
-        z += .1;
-       
-    }
-   
+        z += 0.4;
+        
+    }   
 }
