@@ -68,14 +68,15 @@ public class Obstacle {
     }
     
     public void removeObstacle(int obstacleNumber) {
-        if ((obstacleNumber >= 0) && (obstacleNumber< MAX_OBSTACLES)) {
+        if ((obstacleNumber >= 0) && (obstacleNumber < MAX_OBSTACLES)) {
             obstacleHit[obstacleNumber] = true;
         }
     }
     
     public void hideObstacle(int obstacleNumber) {
-        if ((obstacleNumber >= 0) && (obstacleNumber< MAX_OBSTACLES)) {
+        if ((obstacleNumber >= 0) && (obstacleNumber < MAX_OBSTACLES)) {
             obstacleVisible[obstacleNumber] = false;
+            obstacleHit[obstacleNumber] = true;
         }
     }
     
