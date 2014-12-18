@@ -16,7 +16,7 @@ public class Level extends JPanel {
     private Narwhal narwhal = new Narwhal();
     private Obstacle obstacles = new Obstacle();
     private Piranha nemo = new Piranha();
-    private String background = "Beach pic final.jpg";
+    private String background = "Beach pic final 2.jpg";
     private int levelSpeed = 5;
     private int piranhaSpeed = 12;
     private int levelWidth;
