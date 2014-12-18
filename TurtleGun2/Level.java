@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.lang.Math;
 
 public class Level extends JPanel {
     private Turtle franklin = new Turtle();
@@ -30,9 +31,9 @@ public class Level extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D graphics = (Graphics2D)g;
-        
+        graphics.translate(0, TurtleGun2.getLevelHeight());
+        graphics.rotate(-Math.PI / 2);
         graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
-        //graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
         
         //Draw all of the obstacles if they are visible
         for (int i = 0; i < obstacles.getNumObstacles(); i++) {
@@ -40,11 +41,14 @@ public class Level extends JPanel {
                graphics.drawImage(obstacles.getImage(i), obstacles.getX(i), obstacles.getY(i), this);
             }
         }
+        
+        //Draw all of the piranhas if they are visible
         for (int x = 0; x < nemo.getNumPiranhas(); x++) {
             if (nemo.getVisible(x)) {
                 graphics.drawImage(nemo.getImage(), nemo.getX(x), nemo.getY(x), this);
             }
         }
+        
         graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
