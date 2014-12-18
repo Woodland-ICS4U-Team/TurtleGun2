@@ -6,22 +6,32 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import java.awt.event.KeyEvent;
+import java.awt.Image;
+
 
 public class Level extends JPanel {
     private Turtle franklin = new Turtle();
     private Narwhal narwhal = new Narwhal();
     private Obstacle obstacles = new Obstacle();
     private Piranha nemo = new Piranha();
+    private String background = "Beach pic final.jpg";
     private int levelSpeed = 5;
     private int piranhaSpeed = 12;
     private int levelWidth;
     private int levelHeight;
     private int hitObjectNumber = -1;
+    private Image image;
     
     public Level() {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(background));
+        image = ii.getImage();
+        width = image.getWidth(null);
+        height = image.getHeight(null);
         addKeyListener(new KeyListener(franklin, this));
         setFocusable(true);
-        setBackground(Color.BLACK);
+        setBackground(background);
         setDoubleBuffered(true);
         levelWidth = getWidth();
         levelHeight = getHeight();
