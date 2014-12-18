@@ -22,16 +22,17 @@ public class Level extends JPanel {
     private int levelWidth;
     private int levelHeight;
     private int hitObjectNumber = -1;
-    private Image image;
+    private Image backgroundImage;
+    private int width;
+    private int height;
     
     public Level() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(background));
-        image = ii.getImage();
-        width = image.getWidth(null);
-        height = image.getHeight(null);
+        backgroundImage = ii.getImage();
+        width = backgroundImage.getWidth(null);
+        height = backgroundImage.getHeight(null);
         addKeyListener(new KeyListener(franklin, this));
         setFocusable(true);
-        setBackground(background);
         setDoubleBuffered(true);
         levelWidth = getWidth();
         levelHeight = getHeight();
@@ -41,6 +42,7 @@ public class Level extends JPanel {
         super.paint(g);
         Graphics2D graphics = (Graphics2D)g;
         
+        graphics.drawImage(backgroundImage, 0, 0, this);
         graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
         //graphics.drawImage(nemo.getImage(), nemo.getX(), nemo.getY(), this);
         
