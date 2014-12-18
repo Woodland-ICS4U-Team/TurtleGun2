@@ -4,7 +4,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Turtle {
-    private int STARTING_X = 200;
+    private int STARTING_X = 300;
     private int speed = 0;
     private int distance; //distance from back narwhal
     private String turtleImage = "Turtle.png";
