@@ -73,6 +73,12 @@ public class Obstacle {
         }
     }
     
+    public void hideObstacle(int obstacleNumber) {
+        if ((obstacleNumber >= 0) && (obstacleNumber< MAX_OBSTACLES)) {
+            obstacleVisible[obstacleNumber] = false;
+        }
+    }
+    
     public void moveObstacles(int distance) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i]) {
