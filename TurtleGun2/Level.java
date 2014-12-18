@@ -59,7 +59,7 @@ public class Level extends JPanel {
     public void run() {
         franklin.move();
         narwhal.move();
-        nemo.move(piranhaSpeed);
+        nemo.move(piranhaSpeed, obstacles);
         obstacles.addObstacle();
         obstacles.moveObstacles(levelSpeed);
         hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);

@@ -55,10 +55,11 @@ public class Piranha {
             i++;
         }
     }
-    public void move(int speed) {
-
+    public void move(int speed, Obstacle obstacle) {
+        
         for (int i = 0; i < MAX_SHOTS; i++) {
             if (piranhaVisible[i]) {
+                obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)) );
                 piranhaX[i] += speed;
                 if (piranhaX[i] > BOARD_WIDTH)
                     piranhaVisible[i] = false;
