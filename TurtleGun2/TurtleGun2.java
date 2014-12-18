@@ -11,6 +11,7 @@ public class TurtleGun2 extends JFrame{
     Timer gameSchedule = new Timer();
 
     public TurtleGun2() {
+
         gameSchedule.schedule(timer, 0, 1000 / FRAMES_PER_SECOND);
         JFrame frame = new JFrame("Turtle Gun II");
         frame.add(stage);

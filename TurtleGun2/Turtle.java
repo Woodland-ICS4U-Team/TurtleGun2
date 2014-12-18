@@ -15,7 +15,6 @@ public class Turtle {
     private Image image;
     private int lives = 3;
     Level level;
-    
     //image constructor for turtle    
     public Turtle() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(turtleImage));
@@ -69,7 +68,7 @@ public class Turtle {
     public void keyPressed(int keyCode, Level level) {
         if (keyCode == KeyEvent.VK_SPACE) {
             System.out.println("Space pressed");
-            level.addPiranha(x + width / 2, y + height / 2);
+            level.addPiranha((x + width / 2), y + height / 2  - 12);
         } else if (keyCode == KeyEvent.VK_LEFT) {
             System.out.println("Up pressed");
             speed = -10;
