@@ -34,6 +34,14 @@ public class Turtle {
         x -= 50;
     }
     
+    public void setSpeed(int nSpeed) {
+        speed = nSpeed;
+    }
+    
+    public int getSpeed() {
+        return speed;
+    }
+    
     public int getLives() {
         return lives;
     }
@@ -61,32 +69,6 @@ public class Turtle {
     public void move() {
         if ((y + speed + width < TurtleGun2.getLevelHeight()) && (y + speed > 0)) {
             y += speed;
-        }
-    }
-    
-    //Key listener to guide the turtle
-    public void keyPressed(int keyCode, Level level) {
-        if (keyCode == KeyEvent.VK_SPACE) {
-            System.out.println("Space pressed");
-            level.addPiranha((x + width / 2), y + height / 2  - 12);
-        } else if (keyCode == KeyEvent.VK_LEFT) {
-            System.out.println("Up pressed");
-            speed = -10;
-        } else if (keyCode == KeyEvent.VK_RIGHT) {
-            System.out.println("Down pressed");
-            speed = 10;
-        }
-    }
-    
-    public void keyReleased(int keyCode) {
-        if (keyCode == KeyEvent.VK_SPACE) {
-
-        } else if (keyCode == KeyEvent.VK_LEFT) {
-            System.out.println("Up pressed");
-            speed = 0;
-        } else if (keyCode == KeyEvent.VK_RIGHT) {
-            System.out.println("Down pressed");
-            speed = 0;
         }
     }
 }

@@ -37,9 +37,9 @@ public class Obstacle {
     public Obstacle() {
         ImageIcon one = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
         obstacleImages[0] = one.getImage();
-        ImageIcon two = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
+        ImageIcon two = new ImageIcon(this.getClass().getResource("Obstacle2.png"));
         obstacleImages[1] = two.getImage();
-        ImageIcon three = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
+        ImageIcon three = new ImageIcon(this.getClass().getResource("Obstacle3.png"));
         obstacleImages[2] = three.getImage();
     }
 
@@ -91,7 +91,7 @@ public class Obstacle {
         }
     }
     
-    //Returns -1 if there is not collision, and the object number if it hit one
+    //Returns -1 if there is not collision, and the object it hit if there is
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (!obstacleHit[i]) {
@@ -124,7 +124,7 @@ public class Obstacle {
     }
     
 //----------------------------------------------------------------------------------------
-//-----------------------------------------getters----------------------------------------
+//------------------------------------getters & setters-----------------------------------
 //----------------------------------------------------------------------------------------
     
     public Image getImage(int obstacleNumber) {
