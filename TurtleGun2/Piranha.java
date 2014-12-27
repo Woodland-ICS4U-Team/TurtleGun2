@@ -4,21 +4,26 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 public class Piranha {
-    private String prianhaImage = "Piranha.png";
-    private int x, y;
-    private Image image;
-    boolean visible;
-    private int width, height;
+    //Constants
     private int MAX_SHOTS = 15;
     private final int BOARD_WIDTH = 1280;
     private final int MISSILE_SPEED = 2;
-    private final int piranhaNum = 0;
+    
+    //related to the physical image of the piranha
+    private String prianhaImage = "Piranha.png";
+    private int x, y;
+    private Image image;
+    private boolean visible;
+    private int width, height;
+    private int piranhaX[] = new int[MAX_SHOTS];
+    private int piranhaY[] = new int[MAX_SHOTS];    
     private boolean piranhaVisible[] = new boolean[15];
     private Image[] piranhaImages = new Image[15];
-    private int piranhaX[] = new int[MAX_SHOTS];
-    private int piranhaY[] = new int[MAX_SHOTS];
+
+    //Shot related
     private int i = 0;
     private int hit = 0;
+    private int shotsLeft = MAX_SHOTS;
     public Piranha() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
@@ -43,9 +48,6 @@ public class Piranha {
     }
     public boolean getVisible(int piranhaNumber) {
         return piranhaVisible[piranhaNumber];
-    }
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
     }
     public void addPiranha(int x, int y) {
         if (!piranhaVisible[i]) {

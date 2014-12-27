@@ -9,12 +9,12 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
-
+import javax.swing.JButton;
 public class Level extends JPanel {
 
-//----------------------------------------------------------------------------------------
-//----------------------------------------variables---------------------------------------
-//----------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
+    //----------------------------------------variables---------------------------------------
+    //----------------------------------------------------------------------------------------
 
     private Turtle franklin = new Turtle();
     private Narwhal narwhal = new Narwhal();
@@ -38,11 +38,12 @@ public class Level extends JPanel {
     private int hitObjectNumber = -1;
     private int width = 0;
     private int height = 0;
-    
+    private int shotsLeft = 15;
 
-//----------------------------------------------------------------------------------------
-//---------------------------------------constructor--------------------------------------
-//----------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------
+    //---------------------------------------constructor--------------------------------------
+    //----------------------------------------------------------------------------------------
     
     public Level() {
         
@@ -59,9 +60,9 @@ public class Level extends JPanel {
         addKeyListener(new KeyListener(this));
     }
     
-//----------------------------------------------------------------------------------------
-//-----------------------------------------methods----------------------------------------
-//----------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
+    //-----------------------------------------methods----------------------------------------
+    //----------------------------------------------------------------------------------------
     
     //This method is called every frame by the level.repaint method in gameTimer
     public void paint(Graphics g) {
@@ -71,8 +72,8 @@ public class Level extends JPanel {
         switch(gameMode) {
             //The starting screen
             case 1:
-            
                 graphics.drawImage(STARTING_IMAGE, 0, 0, this);
+                
             
             break;
             
@@ -82,7 +83,7 @@ public class Level extends JPanel {
                 //The objects are drawn in the order that they should appear on the screen, from bottom to top
                 graphics.drawImage(BACKGROUND_IMAGE, 0, 0, this);
                 graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
-                
+                graphics.drawString("Piranhas Left: " +  shotsLeft, 10, 10);
                 for (int i = 0; i < obstacles.getNumObstacles(); i++) {
                     if (obstacles.getVisible(i)) {
                        graphics.drawImage(obstacles.getImage(i), obstacles.getX(i), obstacles.getY(i), this);
@@ -124,6 +125,7 @@ public class Level extends JPanel {
             case 2:
                 
                 //Move all of the objects
+
                 franklin.move();
                 narwhal.move();
                 nemo.move(piranhaSpeed, obstacles);
@@ -172,6 +174,7 @@ public class Level extends JPanel {
                 if (key == KeyEvent.VK_SPACE) {
                     //Add a piranha at the turtle
                     level.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
+                    shotsLeft--;
                 } else if (key == KeyEvent.VK_LEFT) {
                     //Make the turtle move father up each frame when the left key is pressed
                     franklin.setSpeed(-10);
@@ -225,14 +228,16 @@ public class Level extends JPanel {
         //TODO reset the different variables in all of the classes - They should each have a reset method
     }
   
-//----------------------------------------------------------------------------------------
-//------------------------------------getters & setters-----------------------------------
-//----------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
+    //------------------------------------getters & setters-----------------------------------
+    //----------------------------------------------------------------------------------------
     
     public int getLevelWidth() {
         return levelWidth;
     }
-    
+    public int getShotsLeft() {
+        return shotsLeft;
+    }
     public int getLevelHeight() {
         return levelHeight;
     }
