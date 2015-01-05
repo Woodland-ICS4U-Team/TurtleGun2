@@ -192,7 +192,7 @@ public class Level extends JPanel {
             
                 //Go to the start screen if space is pressed
                 if (key == KeyEvent.VK_SPACE) {
-                     nemo.reset();
+                    nemo.reset();
                     obstacles.reset();
                     franklin.reset();
                     gameMode = 1;
