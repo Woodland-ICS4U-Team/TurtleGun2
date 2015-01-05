@@ -42,6 +42,7 @@ public class Turtle {
         x = STARTING_X;
         y = TurtleGun2.getLevelHeight()/2;
         lives = 3;
+        speed = 0;
     }
     public int getSpeed() {
         return speed;
