@@ -38,7 +38,7 @@ public class Level extends JPanel {
     private int hitObjectNumber = -1;
     private int width = 0;
     private int height = 0;
-    private int shotsLeft = 15;
+    private int shotsLeft;
 
 
     //----------------------------------------------------------------------------------------
@@ -164,6 +164,7 @@ public class Level extends JPanel {
                 //Start the game if space is pressed
                 if (key == KeyEvent.VK_SPACE) {
                     gameMode = 2;
+                    shotsLeft = nemo.getNumPiranhas();
                 }
             
             break;
