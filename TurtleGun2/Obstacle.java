@@ -11,7 +11,9 @@ public class Obstacle {
     private int STARTING_OBSTACLE_PROBABILITY = 20;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
-    private int MIN_OBSTACLE_DISTANCE = 300;
+    private int MAX_DIFFICULTY = 10;
+    //This is the minimum at difficulty 1, but it changes as the difficulty increaces
+    private int MIN_OBSTACLE_DISTANCE = 400;
     private int OBSTACLE_WIDTH = 100;
     private int OBSTACLE_HEIGHT = 100;
     private int STARTING_X = TurtleGun2.getLevelWidth();
@@ -50,7 +52,9 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
 
     public void addObstacle() {
-        if (number.nextInt((int)(obstacleProbability / difficulty)) == 1) {
+        if (number.nextInt((int)(obstacleProbability / (difficulty / 5))) == 1) {
+            //When difficulty increaces, the obstacles move closer together and there is a greater chance of them spawning
+            difficulty += 0.1;
             for (int i = 0; (i < MAX_OBSTACLES); i ++) {
                 if (!obstacleVisible[i]) {
                     int x = STARTING_X;
@@ -115,7 +119,7 @@ public class Obstacle {
                 objX = obstacleX[i];
                 objY = obstacleY[i];
                 distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
-                if (distance < MIN_OBSTACLE_DISTANCE) {
+                if (distance < (MIN_OBSTACLE_DISTANCE - ((difficulty - 1) * 200))) {
                     return false;
                 }
             }
