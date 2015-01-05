@@ -165,6 +165,8 @@ public class Level extends JPanel {
                 if (key == KeyEvent.VK_SPACE) {
                     gameMode = 2;
                     shotsLeft = nemo.getNumPiranhas();
+                    nemo.reset();
+                    obstacles.reset();
                 }
             
             break;
