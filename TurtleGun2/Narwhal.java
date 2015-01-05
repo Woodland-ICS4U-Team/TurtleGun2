@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Narwhal {
     private int distance;
-    private String narwhalImage = "Narwhal.png";
+    private String narwhalImage = "NarwhalAnimated.gif";
     private int width;
     private int height;
     private int x = 0;
