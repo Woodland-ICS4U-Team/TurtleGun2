@@ -22,6 +22,7 @@ public class Obstacle {
     private Image obstacleImage[] = new Image[MAX_OBSTACLES];
     private int obstacleX[] = new int[MAX_OBSTACLES];
     private int obstacleY[] = new int[MAX_OBSTACLES];
+    private int difficulty = 1;
     private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
     private boolean obstacleHit[] = new boolean [MAX_OBSTACLES];
     private Image[] obstacleImages = new Image[NUM_IMAGES];
@@ -35,6 +36,7 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
  
     public Obstacle() {
+        difficulty = 1;
         ImageIcon one = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
         obstacleImages[0] = one.getImage();
         ImageIcon two = new ImageIcon(this.getClass().getResource("Obstacle2.png"));
@@ -54,7 +56,6 @@ public class Obstacle {
                     int x = STARTING_X;
                     int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
                     if (canPlaceObstacle(x, y)) {
-                        System.out.println("added obj");
                         obstacleVisible[i] = true;
                         obstacleHit[i] = false;
                         obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
@@ -121,6 +122,17 @@ public class Obstacle {
         }
         System.out.println("can place obstacle");
         return true;
+    }
+    
+    //Called by the Level class when the game is restarted, so all the variables need to be reset
+    public void reset() {
+        obstacleImage = new Image[MAX_OBSTACLES];
+        obstacleX = new int[MAX_OBSTACLES];
+        obstacleY = new int[MAX_OBSTACLES];
+        difficulty = 1;
+        obstacleVisible = new boolean [MAX_OBSTACLES];
+        obstacleHit = new boolean [MAX_OBSTACLES];
+        obstacleImages = new Image[NUM_IMAGES];
     }
     
 //----------------------------------------------------------------------------------------
