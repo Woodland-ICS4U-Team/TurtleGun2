@@ -49,6 +49,9 @@ public class Piranha {
     public boolean getVisible(int piranhaNumber) {
         return piranhaVisible[piranhaNumber];
     }
+    public void resetPiranha(){
+        
+    }
     public void addPiranha(int x, int y) {
         if (!piranhaVisible[i]) {
             piranhaVisible[i] = true;
