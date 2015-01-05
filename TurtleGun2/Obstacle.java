@@ -18,7 +18,7 @@ public class Obstacle {
     private int MAX_STARTING_Y = TurtleGun2.getLevelHeight() - OBSTACLE_HEIGHT;
     private int MIN_STARTING_Y = 0;
     
-    //obstacle tables
+    //obstacle arrays
     private Image obstacleImage[] = new Image[MAX_OBSTACLES];
     private int obstacleX[] = new int[MAX_OBSTACLES];
     private int obstacleY[] = new int[MAX_OBSTACLES];
@@ -50,7 +50,7 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
 
     public void addObstacle() {
-        if (number.nextInt(obstacleProbability) == 1) {
+        if (number.nextInt((int)(obstacleProbability / difficulty)) == 1) {
             for (int i = 0; (i < MAX_OBSTACLES); i ++) {
                 if (!obstacleVisible[i]) {
                     int x = STARTING_X;
@@ -126,7 +126,6 @@ public class Obstacle {
     
     //Called by the Level class when the game is restarted, so all the variables need to be reset
     public void reset() {
-        obstacleImage = new Image[MAX_OBSTACLES];
         obstacleX = new int[MAX_OBSTACLES];
         obstacleY = new int[MAX_OBSTACLES];
         difficulty = 1;
