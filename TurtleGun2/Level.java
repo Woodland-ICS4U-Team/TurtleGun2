@@ -167,6 +167,7 @@ public class Level extends JPanel {
                     shotsLeft = nemo.getNumPiranhas();
                     nemo.reset();
                     obstacles.reset();
+                    franklin.reset();
                 }
             
             break;
