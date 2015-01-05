@@ -37,7 +37,12 @@ public class Turtle {
     public void setSpeed(int nSpeed) {
         speed = nSpeed;
     }
-    
+    //resets the variables after a new game is started
+    public void reset() {
+        x = STARTING_X;
+        y = TurtleGun2.getLevelHeight()/2;
+        lives = 3;
+    }
     public int getSpeed() {
         return speed;
     }
