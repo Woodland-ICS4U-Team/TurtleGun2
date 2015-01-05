@@ -39,7 +39,7 @@ public class Narwhal {
     //Sin fuction narwhal to move
     public void move() {
         y = (int)(260 * Math.sin(z)) + 250;
-        z += 0.4;
+        z += 0.05;
         
     }   
 }
