@@ -29,16 +29,17 @@ public class Level extends JPanel {
     private Image BACKGROUND_IMAGE = (new ImageIcon(this.getClass().getResource(BACKGROUND_IMAGE_PATH))).getImage();
     private Image GAME_OVER_IMAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_PATH))).getImage();
     
+    //Constants
+    private int LEVEL_SPEED = 5;
+    private int LEVEL_WIDTH = getWidth();
+    private int LEVEL_HEIGHT = getHeight();
+    private int PIRANHA_SPEED = 12;
+    
     //The game modes are 1 for the start screen, 2 for the gameplay, and 3 for the game over screen
     private int gameMode = 1;
-    private int levelSpeed = 5;
-    private int piranhaSpeed = 12;
-    private int levelWidth = 0;
-    private int levelHeight = 0;
     private int hitObjectNumber = -1;
-    private int width = 0;
-    private int height = 0;
     private int shotsLeft;
+    private int distance = 0;
 
 
     //----------------------------------------------------------------------------------------
@@ -46,15 +47,9 @@ public class Level extends JPanel {
     //----------------------------------------------------------------------------------------
     
     public Level() {
-        
-        //Create the images
-        width = BACKGROUND_IMAGE.getWidth(null);
-        height = BACKGROUND_IMAGE.getHeight(null);
         setFocusable(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
-        levelWidth = getWidth();
-        levelHeight = getHeight();
         
         //Create the key listener, including the level object
         addKeyListener(new KeyListener(this));
@@ -131,9 +126,9 @@ public class Level extends JPanel {
 
                 franklin.move();
                 narwhal.move();
-                nemo.move(piranhaSpeed, obstacles);
+                nemo.move(PIRANHA_SPEED, obstacles);
                 obstacles.addObstacle();
-                obstacles.moveObstacles(levelSpeed);
+                obstacles.moveObstacles(LEVEL_SPEED);
                 
                 //hitObjectNumber is -1 if nothing was hit, and the object number (0-9) if something was
                 hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);
@@ -199,7 +194,8 @@ public class Level extends JPanel {
                     obstacles.reset();
                     franklin.reset();
                     gameMode = 1;
-                    
+                    hitObjectNumber = -1;
+                    distance = 0;
                 }
             
             break;
@@ -242,12 +238,14 @@ public class Level extends JPanel {
     //----------------------------------------------------------------------------------------
     
     public int getLevelWidth() {
-        return levelWidth;
+        return LEVEL_WIDTH;
     }
+    
     public int getShotsLeft() {
         return shotsLeft;
     }
+    
     public int getLevelHeight() {
-        return levelHeight;
+        return LEVEL_HEIGHT;
     }
 }
