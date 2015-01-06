@@ -9,7 +9,7 @@ public class Piranha {
     private final int BOARD_WIDTH = 1280;
     private final int MISSILE_SPEED = 2;
     
-    //related to the physical image of the piranha
+    //Prianha constructs
     private String prianhaImage = "Piranha.png";
     private int x, y;
     private Image image;
@@ -20,7 +20,7 @@ public class Piranha {
     private boolean piranhaVisible[] = new boolean[15];
     private Image[] piranhaImages = new Image[15];
 
-    //Shot related
+    //Keeps track of prianhas fired
     private int i = 0;
     private int hit = 0;
     private int shotsLeft = MAX_SHOTS;
@@ -32,15 +32,15 @@ public class Piranha {
     public Image getImage() {
         return image;
     }
-    //accessor for the X value of the piranha
+    // the X value of the piranha
     public int getX(int i) {
         return piranhaX[i];
     }
-    //accessor for the Y value of the piranha
+    // the Y value of the piranha
     public int getY(int i) {
         return piranhaY[i];
     }
-    //accessor to get the maximum shots allowed in a game
+    //How many shots you can have
     public int getNumPiranhas() {
         return MAX_SHOTS;
     }
@@ -48,7 +48,7 @@ public class Piranha {
     public boolean getVisible(int piranhaNumber) {
         return piranhaVisible[piranhaNumber];
     }
-    //used to resset the number of shots
+    //used to reset the number of shots
     public void reset(){
         i = 0;
     }
@@ -62,14 +62,14 @@ public class Piranha {
             i++;
         }
     }
-    // moved the piraha across the screen for every shot piranha, and checks collision detection
+    // collision detection for piranha 
     public void move(int speed, Obstacle obstacle) {
         
         for (int i = 0; i < MAX_SHOTS; i++) {
             if (piranhaVisible[i]) {
                 hit = obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null));
                 if (hit != -1) { //hit = -1 if obstacle is hit, so it hides the obstacle and the piranha
-                    obstacle.hideObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
+                    obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
                     piranhaVisible[i] = false;
                 }
                 // moves piranha at desired speed
