@@ -69,7 +69,7 @@ public class Piranha {
             if (piranhaVisible[i]) {
                 hit = obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null));
                 if (hit != -1) { //hit = -1 if obstacle is hit, so it hides the obstacle and the piranha
-                    obstacle.hideObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
+                    obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
                     piranhaVisible[i] = false;
                 }
                 // moves piranha at desired speed
