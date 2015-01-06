@@ -39,7 +39,7 @@ public class Level extends JPanel {
     private int gameMode = 1;
     private int hitObjectNumber = -1;
     private int shotsLeft;
-    private int distance = 0;
+    private double distance = 0;
 
 
     //----------------------------------------------------------------------------------------
@@ -80,6 +80,7 @@ public class Level extends JPanel {
                 graphics.drawImage(BACKGROUND_IMAGE, 0, 0, this);
                 graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
                 graphics.drawString("Piranhas Left: " +  shotsLeft, 10, 10);
+                graphics.drawString("Score: " +  distance, 150, 10);
                 for (int i = 0; i < obstacles.getNumObstacles(); i++) {
                     if (obstacles.getVisible(i)) {
                        graphics.drawImage(obstacles.getImage(i), obstacles.getX(i), obstacles.getY(i), this);
@@ -121,6 +122,8 @@ public class Level extends JPanel {
             
             //Code that is run during the game screen
             case 2:
+            
+                distance += .1;
                 
                 //Move all of the objects
 
