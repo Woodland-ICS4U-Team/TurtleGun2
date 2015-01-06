@@ -22,9 +22,9 @@ public class Level extends JPanel {
     private Piranha nemo = new Piranha();
     
     //Images
-    private String STARTING_IMAGE_PATH = "Turtle Gun menu pic.png";
+    private String STARTING_IMAGE_PATH = "TG2Menu.png";
     private String BACKGROUND_IMAGE_PATH = "Beach pic final 2.jpg";
-    private String GAME_OVER_IMAGE_PATH = "Game Over Image.jpg";
+    private String GAME_OVER_IMAGE_PATH = "End Image.jpg";
     private Image STARTING_IMAGE = (new ImageIcon(this.getClass().getResource(STARTING_IMAGE_PATH))).getImage();
     private Image BACKGROUND_IMAGE = (new ImageIcon(this.getClass().getResource(BACKGROUND_IMAGE_PATH))).getImage();
     private Image GAME_OVER_IMAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_PATH))).getImage();
@@ -100,7 +100,7 @@ public class Level extends JPanel {
             //The game over screen
             case 3:
             
-                graphics.drawImage(GAME_OVER_IMAGE, 0, 0, this);
+                graphics.drawImage(GAME_OVER_IMAGE, 640, 360, this);
                 System.out.println("painted case 3");
                 
             break;

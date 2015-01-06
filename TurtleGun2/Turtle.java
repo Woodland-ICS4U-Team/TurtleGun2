@@ -11,7 +11,7 @@ public class Turtle {
     private int width;
     private int height;
     private int x = STARTING_X;
-    private int y = (TurtleGun2.getLevelHeight()/2) -80;
+    private int y = TurtleGun2.getLevelHeight()/2 -80;
     private Image image;
     private int lives = 3;
     Level level;
@@ -40,7 +40,7 @@ public class Turtle {
     //resets the variables after a new game is started
     public void reset() {
         x = STARTING_X;
-        y = (TurtleGun2.getLevelHeight()/2) -80;
+        y = TurtleGun2.getLevelHeight()/2 -80;
         lives = 3;
         speed = 0;
     }
