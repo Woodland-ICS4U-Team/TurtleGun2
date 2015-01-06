@@ -52,9 +52,9 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
 
     public void addObstacle() {
-        if (number.nextInt((int)(obstacleProbability / (difficulty / 5))) == 1) {
+        if ((number.nextInt(obstacleProbability) / difficulty / 3) <= 1) {
             //When difficulty increaces, the obstacles move closer together and there is a greater chance of them spawning
-            difficulty += 0.1;
+            difficulty += 0.2;
             for (int i = 0; (i < MAX_OBSTACLES); i ++) {
                 if (!obstacleVisible[i]) {
                     int x = STARTING_X;

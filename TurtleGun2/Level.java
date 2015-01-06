@@ -72,8 +72,9 @@ public class Level extends JPanel {
         switch(gameMode) {
             //The starting screen
             case 1:
+            
                 graphics.drawImage(STARTING_IMAGE, 0, 0, this);
-                
+                System.out.println("painted case 1");
             
             break;
             
@@ -97,6 +98,7 @@ public class Level extends JPanel {
                 }
                 
                 graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
+                System.out.println("painted case 2");
                 
             break;
                 
@@ -104,6 +106,7 @@ public class Level extends JPanel {
             case 3:
             
                 graphics.drawImage(GAME_OVER_IMAGE, 0, 0, this);
+                System.out.println("painted case 3");
                 
             break;
         }
