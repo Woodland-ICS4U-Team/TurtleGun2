@@ -31,6 +31,7 @@ public class Obstacle {
     private Image[] obstacleImages = new Image[NUM_IMAGES];
     
     //internal variables
+    private Image bloodCloud = (new ImageIcon(this.getClass().getResource("Blood.png"))).getImage();
     private Random number = new Random();
 
 //----------------------------------------------------------------------------------------
@@ -75,6 +76,7 @@ public class Obstacle {
     public void removeObstacle(int obstacleNumber) {
         if ((obstacleNumber >= 0) && (obstacleNumber < MAX_OBSTACLES)) {
             obstacleHit[obstacleNumber] = true;
+            obstacleImage[obstacleNumber] = bloodCloud;
         }
     }
     
