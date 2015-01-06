@@ -8,30 +8,30 @@ public class Obstacle {
 //----------------------------------------variables---------------------------------------
 //----------------------------------------------------------------------------------------
     //constants
-    private int STARTING_OBSTACLE_PROBABILITY = 20;
+    private double DIFFICULTY_INCREACE = 0.3;
+    private int OBSTACLE_PROBABILITY = 100;
     private int NUM_IMAGES = 3;
-    private int MAX_OBSTACLES = 10;
-    private int MAX_DIFFICULTY = 100;
+    private int MAX_OBSTACLES = 20;
+    private int MAX_DIFFICULTY = 15;
     //This is the minimum at difficulty 1, but it changes as the difficulty increaces
     private int MIN_OBSTACLE_DISTANCE = 400;
     private int OBSTACLE_WIDTH = 100;
     private int OBSTACLE_HEIGHT = 100;
     private int STARTING_X = TurtleGun2.getLevelWidth();
-    private int MAX_STARTING_Y = TurtleGun2.getLevelHeight() - OBSTACLE_HEIGHT;
+    private int MAX_STARTING_Y = TurtleGun2.getLevelHeight() - OBSTACLE_HEIGHT - 80;
     private int MIN_STARTING_Y = 0;
     
     //obstacle arrays
     private Image obstacleImage[] = new Image[MAX_OBSTACLES];
     private int obstacleX[] = new int[MAX_OBSTACLES];
     private int obstacleY[] = new int[MAX_OBSTACLES];
-    private int difficulty = 1;
+    private double difficulty = 1;
     private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
     private boolean obstacleHit[] = new boolean [MAX_OBSTACLES];
     private Image[] obstacleImages = new Image[NUM_IMAGES];
     
     //internal variables
     private Random number = new Random();
-    private int obstacleProbability = STARTING_OBSTACLE_PROBABILITY;
 
 //----------------------------------------------------------------------------------------
 //---------------------------------------constructor--------------------------------------
@@ -52,21 +52,21 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
 
     public void addObstacle() {
-        if ((number.nextInt(obstacleProbability) / difficulty / 3) <= 1) {
-            //When difficulty increaces, the obstacles move closer together and there is a greater chance of them spawning
-            difficulty += 0.2;
-            for (int i = 0; (i < MAX_OBSTACLES); i ++) {
-                if (!obstacleVisible[i]) {
-                    int x = STARTING_X;
-                    int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
-                    if (canPlaceObstacle(x, y)) {
-                        obstacleVisible[i] = true;
-                        obstacleHit[i] = false;
-                        obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
-                        obstacleY[i] = y;
-                        obstacleX[i] = x;
-                        return;
+        //When difficulty increaces, the obstacles move closer together and there is a greater chance of them spawning
+        for (int i = 0; (i < MAX_OBSTACLES); i ++) {
+            if (!obstacleVisible[i]) {
+                int x = STARTING_X;
+                int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
+                if (canPlaceObstacle(x, y)) {
+                    if (difficulty < MAX_DIFFICULTY) {
+                        difficulty += DIFFICULTY_INCREACE;
                     }
+                    obstacleVisible[i] = true;
+                    obstacleHit[i] = false;
+                    obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
+                    obstacleY[i] = y;
+                    obstacleX[i] = x;
+                    return;
                 }
             }
         }
@@ -111,21 +111,24 @@ public class Obstacle {
     }
     
     private boolean canPlaceObstacle(int x, int y) {
-        int objX;
-        int objY;
-        double distance;
-        for (int i = 0; i < MAX_OBSTACLES; i++) {
-            if (obstacleVisible[i] == true) {
-                objX = obstacleX[i];
-                objY = obstacleY[i];
-                distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
-                if (distance < (MIN_OBSTACLE_DISTANCE - ((difficulty - 1) * 200))) {
-                    return false;
+        if (number.nextInt(OBSTACLE_PROBABILITY) == 1) {
+            int objX;
+            int objY;
+            double distance;
+            for (int i = 0; i < MAX_OBSTACLES; i++) {
+                if (obstacleVisible[i] == true) {
+                    objX = obstacleX[i];
+                    objY = obstacleY[i];
+                    distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
+                    if (distance < (MIN_OBSTACLE_DISTANCE - ((difficulty) * 20))) {
+                        return false;
+                    }
                 }
             }
+            System.out.println("can place obstacle");
+            return true;
         }
-        System.out.println("can place obstacle");
-        return true;
+        return false;
     }
     
     //Called by the Level class when the game is restarted, so all the variables need to be reset
@@ -137,7 +140,6 @@ public class Obstacle {
         obstacleVisible = new boolean [MAX_OBSTACLES];
         obstacleHit = new boolean [MAX_OBSTACLES];
         obstacleImages = new Image[NUM_IMAGES];
-        obstacleProbability = STARTING_OBSTACLE_PROBABILITY;
         difficulty = 1;
         ImageIcon one = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
         obstacleImages[0] = one.getImage();
