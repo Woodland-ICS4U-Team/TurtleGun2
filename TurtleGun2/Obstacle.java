@@ -11,7 +11,7 @@ public class Obstacle {
     private int STARTING_OBSTACLE_PROBABILITY = 20;
     private int NUM_IMAGES = 3;
     private int MAX_OBSTACLES = 10;
-    private int MAX_DIFFICULTY = 10;
+    private int MAX_DIFFICULTY = 100;
     //This is the minimum at difficulty 1, but it changes as the difficulty increaces
     private int MIN_OBSTACLE_DISTANCE = 400;
     private int OBSTACLE_WIDTH = 100;
@@ -130,12 +130,21 @@ public class Obstacle {
     
     //Called by the Level class when the game is restarted, so all the variables need to be reset
     public void reset() {
+        obstacleImage = new Image[MAX_OBSTACLES];
         obstacleX = new int[MAX_OBSTACLES];
         obstacleY = new int[MAX_OBSTACLES];
         difficulty = 1;
         obstacleVisible = new boolean [MAX_OBSTACLES];
         obstacleHit = new boolean [MAX_OBSTACLES];
         obstacleImages = new Image[NUM_IMAGES];
+        obstacleProbability = STARTING_OBSTACLE_PROBABILITY;
+        difficulty = 1;
+        ImageIcon one = new ImageIcon(this.getClass().getResource("Obstacle1.png"));
+        obstacleImages[0] = one.getImage();
+        ImageIcon two = new ImageIcon(this.getClass().getResource("Obstacle2.png"));
+        obstacleImages[1] = two.getImage();
+        ImageIcon three = new ImageIcon(this.getClass().getResource("Obstacle3.png"));
+        obstacleImages[2] = three.getImage();
     }
     
 //----------------------------------------------------------------------------------------
