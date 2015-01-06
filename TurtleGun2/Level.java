@@ -22,7 +22,7 @@ public class Level extends JPanel {
     private Piranha nemo = new Piranha();
     
     //Images
-    private String STARTING_IMAGE_PATH = "Starting Image.jpg";
+    private String STARTING_IMAGE_PATH = "Turtle Gun menu pic.png";
     private String BACKGROUND_IMAGE_PATH = "Beach pic final 2.jpg";
     private String GAME_OVER_IMAGE_PATH = "Game Over Image.jpg";
     private Image STARTING_IMAGE = (new ImageIcon(this.getClass().getResource(STARTING_IMAGE_PATH))).getImage();
