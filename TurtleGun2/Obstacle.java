@@ -11,6 +11,7 @@ public class Obstacle {
     private double DIFFICULTY_INCREACE = 0.3;
     private int OBSTACLE_PROBABILITY = 100;
     private int NUM_IMAGES = 3;
+    private int NUM_BLOOD = 3;
     private int MAX_OBSTACLES = 20;
     private int MAX_DIFFICULTY = 15;
     //This is the minimum at difficulty 1, but it changes as the difficulty increaces
@@ -29,10 +30,10 @@ public class Obstacle {
     private double difficulty = 1;
     private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
     private boolean obstacleHit[] = new boolean [MAX_OBSTACLES];
-    private Image[] obstacleImages = new Image[NUM_IMAGES];
+    private Image obstacleImages[] = new Image[NUM_IMAGES];
     
     //Internal variables
-    private Image bloodCloud = (new ImageIcon(this.getClass().getResource("Blood1.png"))).getImage();
+    private Image bloodCloud[] = new Image[NUM_BLOOD];
     private Random number = new Random();
 
 //----------------------------------------------------------------------------------------
@@ -47,6 +48,9 @@ public class Obstacle {
         obstacleImages[1] = two.getImage();
         ImageIcon three = new ImageIcon(this.getClass().getResource("Obstacle3.png"));
         obstacleImages[2] = three.getImage();
+        bloodCloud[0] = (new ImageIcon(this.getClass().getResource("Blood1.png"))).getImage();
+        bloodCloud[1] = (new ImageIcon(this.getClass().getResource("Blood2.png"))).getImage();
+        bloodCloud[2] = (new ImageIcon(this.getClass().getResource("Blood3.png"))).getImage();
     }
 
 //----------------------------------------------------------------------------------------
@@ -81,7 +85,7 @@ public class Obstacle {
     public void removeObstacle(int obstacleNumber) {
         if ((obstacleNumber >= 0) && (obstacleNumber < MAX_OBSTACLES)) {
             obstacleHit[obstacleNumber] = true;
-            obstacleImage[obstacleNumber] = bloodCloud;
+            obstacleImage[obstacleNumber] = bloodCloud[number.nextInt(NUM_BLOOD)];
         }
     }
     
