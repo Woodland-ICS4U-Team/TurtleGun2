@@ -32,9 +32,13 @@ public class Narwhal {
     public int getY() {
         return y;
     }
-    //Gets the distace from turtle
-    public int getDistance() {
-        return distance;
+
+    public int getWidth() {
+        return width;
+     }
+    
+    public int getHeight() {
+        return height;
     }
     //Sin fuction narwhal to move
     public void move() {
