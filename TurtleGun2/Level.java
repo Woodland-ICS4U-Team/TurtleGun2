@@ -123,7 +123,7 @@ public class Level extends JPanel {
             //Code that is run during the game screen
             case 2:
             
-                distance += .1;
+                distance += .05;
                 
                 //Move all of the objects
 
