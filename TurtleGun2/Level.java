@@ -101,7 +101,7 @@ public class Level extends JPanel {
             //The game over screen
             case 3:
             
-                graphics.drawImage(GAME_OVER_IMAGE, 640, 360, this);
+                graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
                 System.out.println("painted case 3");
                 
             break;
