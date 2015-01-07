@@ -32,7 +32,7 @@ public class Obstacle {
     private Image[] obstacleImages = new Image[NUM_IMAGES];
     
     //Internal variables
-    private Image bloodCloud = (new ImageIcon(this.getClass().getResource("Blood.png"))).getImage();
+    private Image bloodCloud = (new ImageIcon(this.getClass().getResource("Blood1.png"))).getImage();
     private Random number = new Random();
 
 //----------------------------------------------------------------------------------------
