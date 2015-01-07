@@ -145,7 +145,7 @@ public class Level extends JPanel {
                 }
                 
                 //Remove people hit by the narwal
-                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX(), narwhal.getY(), narwhal.getWidth(), narwhal.getHeight());
+                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX(), narwhal.getY(), narwhal.getWidth(), narwhal.getHeight()));
             
             break;
             

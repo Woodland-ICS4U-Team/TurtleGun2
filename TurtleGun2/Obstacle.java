@@ -7,7 +7,7 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
 //----------------------------------------variables---------------------------------------
 //----------------------------------------------------------------------------------------
-    //constants
+    //Constants
     private double DIFFICULTY_INCREACE = 0.3;
     private int OBSTACLE_PROBABILITY = 100;
     private int NUM_IMAGES = 3;
@@ -21,16 +21,17 @@ public class Obstacle {
     private int MAX_STARTING_Y = TurtleGun2.getLevelHeight() - OBSTACLE_HEIGHT - 80;
     private int MIN_STARTING_Y = 0;
     
-    //obstacle arrays
+    //Obstacle arrays
     private Image obstacleImage[] = new Image[MAX_OBSTACLES];
     private int obstacleX[] = new int[MAX_OBSTACLES];
     private int obstacleY[] = new int[MAX_OBSTACLES];
+    //Determines how close the obstaces can be to eachother
     private double difficulty = 1;
     private boolean obstacleVisible[] = new boolean [MAX_OBSTACLES];
     private boolean obstacleHit[] = new boolean [MAX_OBSTACLES];
     private Image[] obstacleImages = new Image[NUM_IMAGES];
     
-    //internal variables
+    //Internal variables
     private Image bloodCloud = (new ImageIcon(this.getClass().getResource("Blood.png"))).getImage();
     private Random number = new Random();
 
@@ -53,12 +54,15 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
 
     public void addObstacle() {
-        //When difficulty increaces, the obstacles move closer together and there is a greater chance of them spawning
+        //When difficulty increaces, the obstacles move closer together and they spawn more often
         for (int i = 0; (i < MAX_OBSTACLES); i ++) {
+            //Search for obstacles that are off the screen
             if (!obstacleVisible[i]) {
                 int x = STARTING_X;
                 int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
+                //If the obstacle can be placed, create it off the right side of the screen
                 if (canPlaceObstacle(x, y)) {
+                    //Increace the difficulty when an obstacle is created
                     if (difficulty < MAX_DIFFICULTY) {
                         difficulty += DIFFICULTY_INCREACE;
                     }
@@ -73,6 +77,7 @@ public class Obstacle {
         }
     }
     
+    //Turns off colision detection for the obstacle and replaces the image with blood
     public void removeObstacle(int obstacleNumber) {
         if ((obstacleNumber >= 0) && (obstacleNumber < MAX_OBSTACLES)) {
             obstacleHit[obstacleNumber] = true;
@@ -80,6 +85,7 @@ public class Obstacle {
         }
     }
     
+    //Removes the obstacle and turns off collision detection
     public void hideObstacle(int obstacleNumber) {
         if ((obstacleNumber >= 0) && (obstacleNumber < MAX_OBSTACLES)) {
             obstacleVisible[obstacleNumber] = false;
@@ -87,6 +93,7 @@ public class Obstacle {
         }
     }
     
+    //Moves all the obstacles a certain distance (called in the run method of level)
     public void moveObstacles(int distance) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (obstacleVisible[i]) {
@@ -98,7 +105,8 @@ public class Obstacle {
         }
     }
     
-    //Returns -1 if there is not collision, and the object it hit if there is
+    //Returns -1 if there is not collision
+    //If there is a collision, it returns the number of the obstacle that has been hit
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (!obstacleHit[i]) {
@@ -112,15 +120,19 @@ public class Obstacle {
         return -1;
     }
     
+    //Checks to see whether or not an obstacle can spawn
     private boolean canPlaceObstacle(int x, int y) {
+        //An obstacle is placed based on the variable OBSTACLE_PROBABILITY
         if (number.nextInt(OBSTACLE_PROBABILITY) == 1) {
             int objX;
             int objY;
             double distance;
+            //Check each obstacle, and make sure it is not too close to each other
             for (int i = 0; i < MAX_OBSTACLES; i++) {
                 if (obstacleVisible[i] == true) {
                     objX = obstacleX[i];
                     objY = obstacleY[i];
+                    //Use pythagorean theorum to determine the distance between the obstacles
                     distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
                     if (distance < (MIN_OBSTACLE_DISTANCE - ((difficulty) * 20))) {
                         return false;
@@ -133,7 +145,7 @@ public class Obstacle {
         return false;
     }
     
-    //Called by the Level class when the game is restarted, so all the variables need to be reset
+    //Level calls this to reset all the variables
     public void reset() {
         obstacleImage = new Image[MAX_OBSTACLES];
         obstacleX = new int[MAX_OBSTACLES];
