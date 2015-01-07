@@ -22,14 +22,12 @@ public class Level extends JPanel {
     private Piranha nemo = new Piranha();
     
     //Images
-    private String STARTING_IMAGE_PATH = "TG2Menu.png";
+    private String STARTING_IMAGE_PATH = "TG2Menu.jpg";
     private String BACKGROUND_IMAGE_PATH = "Beach pic final 2.jpg";
     private String GAME_OVER_IMAGE_PATH = "End Image.jpg";
-    private String GAME_OVER_MESSAGE_PATH = "End Message.png";
     private Image STARTING_IMAGE = (new ImageIcon(this.getClass().getResource(STARTING_IMAGE_PATH))).getImage();
     private Image BACKGROUND_IMAGE = (new ImageIcon(this.getClass().getResource(BACKGROUND_IMAGE_PATH))).getImage();
     private Image GAME_OVER_IMAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_PATH))).getImage();
-    private Image GAME_OVER_MESSAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE_PATH))).getImage();
     
     //Constants
     private int LEVEL_SPEED = 5;
@@ -66,12 +64,12 @@ public class Level extends JPanel {
         super.paint(g);
         Graphics2D graphics = (Graphics2D)g;
         
+        //There are three cases, one for the starting, one for when the game is running, and one case for when the game is over
         switch(gameMode) {
             //The starting screen
             case 1:
             
                 graphics.drawImage(STARTING_IMAGE, 0, 0, this);
-                System.out.println("painted case 1");
             
             break;
             
@@ -81,8 +79,10 @@ public class Level extends JPanel {
                 //The objects are drawn in the order that they should appear on the screen, from bottom to top
                 graphics.drawImage(BACKGROUND_IMAGE, 0, 0, this);
                 graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
+                
                 graphics.drawString("Piranhas Left: " +  shotsLeft, 10, 10);
                 graphics.drawString("Score: " +  distance, 150, 10);
+                
                 for (int i = 0; i < obstacles.getNumObstacles(); i++) {
                     if (obstacles.getVisible(i)) {
                        graphics.drawImage(obstacles.getImage(i), obstacles.getX(i), obstacles.getY(i), this);
@@ -96,16 +96,13 @@ public class Level extends JPanel {
                 }
                 
                 graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
-                System.out.println("painted case 2");
                 
             break;
                 
             //The game over screen
             case 3:
             
-                graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
-                graphics.drawImage(GAME_OVER_MESSAGE, 325, 550, this);
-                System.out.println("painted case 3");
+                graphics.drawImage(GAME_OVER_IMAGE, 640, 360, this);
                 
             break;
         }
@@ -116,6 +113,8 @@ public class Level extends JPanel {
     
     //This method is called every frame by the GameTimer
     public void run() {
+
+        //There are three cases, one for the starting, one for when the game is running, and one case for when the game is over
         switch(gameMode) {
             
             //Code that is run during the starting screen
@@ -125,11 +124,10 @@ public class Level extends JPanel {
             
             //Code that is run during the game screen
             case 2:
-            
+                
                 distance += .1;
                 
                 //Move all of the objects
-
                 franklin.move();
                 narwhal.move();
                 nemo.move(PIRANHA_SPEED, obstacles);
@@ -139,6 +137,7 @@ public class Level extends JPanel {
                 //hitObjectNumber is -1 if nothing was hit, and the object number (0-9) if something was
                 hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);
                 
+                //Remove the obstacle and decreace the players lives
                 if (hitObjectNumber != -1) {
                     franklin.setLives(franklin.getLives() - 1);
                     obstacles.removeObstacle(hitObjectNumber);
@@ -146,6 +145,9 @@ public class Level extends JPanel {
                         gameOver();
                     }
                 }
+                
+                //Remove people hit by the narwal
+                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX(), narwhal.getY(), narwhal.getWidth(), narwhal.getHeight()));
             
             break;
             
@@ -232,11 +234,10 @@ public class Level extends JPanel {
     }
     
     
-    //Called when the player runs out of lives by the run method
+    //Called when the user runs out of lives by the run method
     public void gameOver() {
         gameMode = 3;
         franklin.setLives(3);
-        //TODO reset the different variables in all of the classes - They should each have a reset method
     }
   
     //----------------------------------------------------------------------------------------
