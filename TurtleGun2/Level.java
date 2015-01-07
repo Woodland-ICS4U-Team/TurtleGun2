@@ -25,9 +25,11 @@ public class Level extends JPanel {
     private String STARTING_IMAGE_PATH = "TG2Menu.png";
     private String BACKGROUND_IMAGE_PATH = "Beach pic final 2.jpg";
     private String GAME_OVER_IMAGE_PATH = "End Image.jpg";
+    private String GAME_OVER_MESSAGE_PATH = "End Message.png";
     private Image STARTING_IMAGE = (new ImageIcon(this.getClass().getResource(STARTING_IMAGE_PATH))).getImage();
     private Image BACKGROUND_IMAGE = (new ImageIcon(this.getClass().getResource(BACKGROUND_IMAGE_PATH))).getImage();
     private Image GAME_OVER_IMAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_PATH))).getImage();
+    private Image GAME_OVER_MESSAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE_PATH))).getImage();
     
     //Constants
     private int LEVEL_SPEED = 5;
@@ -102,6 +104,7 @@ public class Level extends JPanel {
             case 3:
             
                 graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
+                graphics.drawImage(GAME_OVER_MESSAGE, 325, 550, this);
                 System.out.println("painted case 3");
                 
             break;
@@ -143,9 +146,6 @@ public class Level extends JPanel {
                         gameOver();
                     }
                 }
-                
-                //Remove people hit by the narwal
-                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX(), narwhal.getY(), narwhal.getWidth(), narwhal.getHeight());
             
             break;
             
