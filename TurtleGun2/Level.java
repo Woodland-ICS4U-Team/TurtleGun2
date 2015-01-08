@@ -83,7 +83,8 @@ public class Level extends JPanel {
                 graphics.drawImage(narwhal.getImage(), narwhal.getX(), narwhal.getY(), this);
                 
                 graphics.drawString("Piranhas Left: " +  shotsLeft, 10, 10);
-                graphics.drawString("Score: " +  distance, 150, 10);
+                
+                graphics.drawString("Score: " +  (int)distance, 150, 10);
                 
                 for (int i = 0; i < obstacles.getNumObstacles(); i++) {
                     if (obstacles.getVisible(i)) {
