@@ -17,8 +17,8 @@ public class Piranha {
     private int width, height;
     private int piranhaX[] = new int[MAX_SHOTS];
     private int piranhaY[] = new int[MAX_SHOTS];    
-    private boolean piranhaVisible[] = new boolean[15];
-    private Image[] piranhaImages = new Image[15];
+    private boolean piranhaVisible[] = new boolean[MAX_SHOTS];
+    private Image[] piranhaImages = new Image[MAX_SHOTS];
 
     //Keeps track of prianhas fired
     private int i = 0;
