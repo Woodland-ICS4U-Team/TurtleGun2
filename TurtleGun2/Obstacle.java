@@ -11,7 +11,7 @@ public class Obstacle {
     private double DIFFICULTY_INCREACE = 0.3;
     private int OBSTACLE_PROBABILITY = 100;
     private int NUM_IMAGES = 3;
-    private int NUM_BLOOD = 3;
+    private int NUM_BLOOD = 4;
     private int MAX_OBSTACLES = 20;
     private int MAX_DIFFICULTY = 15;
     //This is the minimum at difficulty 1, but it changes as the difficulty increaces
@@ -51,6 +51,7 @@ public class Obstacle {
         bloodCloud[0] = (new ImageIcon(this.getClass().getResource("Blood1.png"))).getImage();
         bloodCloud[1] = (new ImageIcon(this.getClass().getResource("Blood2.png"))).getImage();
         bloodCloud[2] = (new ImageIcon(this.getClass().getResource("Blood3.png"))).getImage();
+        bloodCloud[3] = (new ImageIcon(this.getClass().getResource("Blood4.png"))).getImage();
     }
 
 //----------------------------------------------------------------------------------------
@@ -143,7 +144,6 @@ public class Obstacle {
                     }
                 }
             }
-            System.out.println("can place obstacle");
             return true;
         }
         return false;
