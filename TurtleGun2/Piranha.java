@@ -24,6 +24,7 @@ public class Piranha {
     private int i = 0;
     private int hit = 0;
     private int shotsLeft = MAX_SHOTS;
+    private int obstacleDestroyed = 0;
     public Piranha() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
@@ -52,6 +53,9 @@ public class Piranha {
     public void reset(){
         i = 0;
     }
+    public int getObstaclesDestroyed() {
+        return obstacleDestroyed;
+    }
     // when this is called piranha[i] will be set true and will appear in the game, starting where the turtle is
     public void addPiranha(int x, int y) {
         if (!piranhaVisible[i]) {
@@ -71,6 +75,7 @@ public class Piranha {
                 if (hit != -1) { //hit = -1 if obstacle is hit, so it hides the obstacle and the piranha
                     obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
                     piranhaVisible[i] = false;
+                    obstacleDestroyed++;
                 }
                 // moves piranha at desired speed
                 piranhaX[i] += speed; 
