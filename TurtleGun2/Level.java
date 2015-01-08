@@ -26,10 +26,12 @@ public class Level extends JPanel {
     private String BACKGROUND_IMAGE_PATH = "Beach pic final 2.jpg";
     private String GAME_OVER_IMAGE_PATH = "End Image.jpg";
     private String GAME_OVER_MESSAGE_PATH = "End Message.png";
+    private String GAME_OVER_MESSAGE2_PATH = "Game Over.png";
     private Image STARTING_IMAGE = (new ImageIcon(this.getClass().getResource(STARTING_IMAGE_PATH))).getImage();
     private Image BACKGROUND_IMAGE = (new ImageIcon(this.getClass().getResource(BACKGROUND_IMAGE_PATH))).getImage();
     private Image GAME_OVER_IMAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_PATH))).getImage();
-     private Image GAME_OVER_MESSAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE_PATH))).getImage();
+    private Image GAME_OVER_MESSAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE_PATH))).getImage();
+    private Image GAME_OVER_MESSAGE2 = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE2_PATH))).getImage();
     
     //Constants
     private int LEVEL_SPEED = 5;
@@ -106,6 +108,7 @@ public class Level extends JPanel {
             
                 graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
                 graphics.drawImage(GAME_OVER_MESSAGE, 325, 550, this);
+                graphics.drawImage(GAME_OVER_MESSAGE2, 540, 100,this);
                 
             break;
         }
@@ -150,7 +153,7 @@ public class Level extends JPanel {
                 }
                 
                 //Remove people hit by the narwal
-                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX(), narwhal.getY(), narwhal.getWidth(), narwhal.getHeight()));
+                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX() + 20, narwhal.getY() + 20, narwhal.getWidth() - 40, narwhal.getHeight()- 40));
             
             break;
             
