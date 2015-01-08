@@ -9,9 +9,9 @@ public class morePiranhas {
 //----------------------------------------------------------------------------------------
     //constants
     private double DIFFICULTY_INCREACE = 0.3;
-    private int PIRANHA_PROBABILITY = 100;
+    private int PIRANHA_PROBABILITY = 1;
     private int NUM_IMAGES = 1;
-    private int MAX_PIRANHAS = 1;
+    private int MAX_PIRANHAS = 2;
     private int MAX_DIFFICULTY = 15;
     //This is the minimum at difficulty 1, but it changes as the difficulty increaces
     private int MIN_PIRANHA_DISTANCE = 400;
