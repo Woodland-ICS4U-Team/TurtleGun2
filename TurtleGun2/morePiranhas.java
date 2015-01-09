@@ -22,7 +22,7 @@ public class morePiranhas {
         piranhaImage = one.getImage();
     }
     
-        public void piranhaSpawn() {
+    public void piranhaSpawn() {
         if (!piranhaVisible) {
             piranhaVisible = true;
             piranhaY= number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y)+MIN_STARTING_Y;
@@ -30,7 +30,7 @@ public class morePiranhas {
         }
     }
     
-    public void move(int speed, Turtle turtle) {
+    public boolean move(Turtle turtle) {
         
         if (piranhaVisible) {
             //add hit detectyion for turtle
@@ -46,7 +46,7 @@ public class morePiranhas {
                         hit = true; //We hit something
                     }
 
-            if (hit) { //hit = -1 if turtle is hit, so it hides itself
+            if (hit) {
                  //add piranha to inventory
                  piranhaVisible = false;
             }
@@ -55,8 +55,10 @@ public class morePiranhas {
              // if piranha has reached the end of the board without hitting anything, makes it invisible
             if (piranhaX < -20) 
                 piranhaVisible = false;
+
+            return hit;
         }
-        
     } 
+    return false;
   }
 }
