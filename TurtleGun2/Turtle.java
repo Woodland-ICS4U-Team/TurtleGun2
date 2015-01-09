@@ -11,7 +11,7 @@ public class Turtle {
     private int width;
     private int height;
     private int x = STARTING_X;
-    private int y = TurtleGun2.getLevelHeight()/2 -80;
+    private int y = TurtleGun2.getLevelHeight()/2 - 80;
     private Image image;
     private int lives = 3;
     Level level;
@@ -73,7 +73,7 @@ public class Turtle {
     }
     
     public void move() {
-        if ((y + speed + width < TurtleGun2.getLevelHeight()) && (y + speed > 0)) {
+        if ((y + speed + width + 35 < TurtleGun2.getLevelHeight()) && (y + speed > 0)) {
             y += speed;
         }
     }

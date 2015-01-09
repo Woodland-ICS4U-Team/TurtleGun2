@@ -8,12 +8,12 @@ public class Obstacle {
 //----------------------------------------variables---------------------------------------
 //----------------------------------------------------------------------------------------
     //Constants
-    private double DIFFICULTY_INCREACE = 0.3;
+    private double DIFFICULTY_INCREACE = 0.2;
     private int OBSTACLE_PROBABILITY = 100;
     private int NUM_IMAGES = 3;
     private int NUM_BLOOD = 4;
     private int MAX_OBSTACLES = 20;
-    private int MAX_DIFFICULTY = 15;
+    private int MAX_DIFFICULTY = 13;
     //This is the minimum at difficulty 1, but it changes as the difficulty increaces
     private int MIN_OBSTACLE_DISTANCE = 400;
     private int OBSTACLE_WIDTH = 100;
