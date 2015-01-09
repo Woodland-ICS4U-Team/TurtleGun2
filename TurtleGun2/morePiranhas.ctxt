@@ -1,4 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=morePiranhas()
-numComments=1
+comment1.params=
+comment1.target=void\ piranhaSpawn()
+comment2.params=speed\ turtle
+comment2.target=void\ move(int,\ Turtle)
+numComments=3
