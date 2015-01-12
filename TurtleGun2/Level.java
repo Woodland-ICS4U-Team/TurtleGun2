@@ -21,6 +21,7 @@ public class Level extends JPanel {
     private Narwhal narwhal = new Narwhal();
     private Obstacle obstacles = new Obstacle();
     private Piranha nemo = new Piranha();
+    private MorePiranhas piranhaSpawn = new MorePiranhas();
     
     //Images
     private String STARTING_IMAGE_PATH = "TG2Menu.jpg";
@@ -103,6 +104,10 @@ public class Level extends JPanel {
                     }
                 }
                 
+                if (piranhaSpawn.getVisible()) {
+                    graphics.drawImage(piranhaSpawn.getImage(), piranhaSpawn.getX(), piranhaSpawn.getY(), this);
+                }
+                
                 graphics.drawImage(franklin.getImage(), franklin.getX(), franklin.getY(), this);
                 
             break;
@@ -145,6 +150,8 @@ public class Level extends JPanel {
                 //Move all of the objects
                 franklin.move();
                 narwhal.move();
+                piranhaSpawn.spawn();
+                piranhaSpawn.move(franklin, this);
                 nemo.move(PIRANHA_SPEED, obstacles);
                 obstacles.addObstacle();
                 obstacles.moveObstacles(LEVEL_SPEED);
@@ -196,7 +203,7 @@ public class Level extends JPanel {
             
                 if (key == KeyEvent.VK_SPACE) {
                     //Add a piranha at the turtle
-                    level.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
+                    nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                     shotsLeft--;
                     distance -= 10;
                 } else if (key == KeyEvent.VK_LEFT) {
@@ -249,6 +256,11 @@ public class Level extends JPanel {
         nemo.addPiranha(x, y);
     }
     
+    //Add a piranha to the inventory
+    public void addToInventory() {
+        shotsLeft ++;
+        nemo.addToInventory();
+    }
     
     //Called when the user runs out of lives by the run method
     public void gameOver() {
