@@ -199,6 +199,9 @@ public class Level extends JPanel {
                     level.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                     shotsLeft--;
                     distance -= 10;
+                    if (distance < 0) {
+                        distance = 0;
+                    }
                 } else if (key == KeyEvent.VK_LEFT) {
                     //Make the turtle move father up each frame when the left key is pressed
                     franklin.setSpeed(-10);
