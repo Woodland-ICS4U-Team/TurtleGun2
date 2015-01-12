@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
@@ -25,11 +26,13 @@ public class Level extends JPanel {
     private String STARTING_IMAGE_PATH = "TG2Menu.jpg";
     private String BACKGROUND_IMAGE_PATH = "Beach pic final 2.jpg";
     private String GAME_OVER_IMAGE_PATH = "End Image.jpg";
+    private String GAME_OVER_IMAGE_2_PATH = "End Image.jpg";
     private String GAME_OVER_MESSAGE_PATH = "End Message.png";
     private String GAME_OVER_MESSAGE2_PATH = "Game Over.png";
     private Image STARTING_IMAGE = (new ImageIcon(this.getClass().getResource(STARTING_IMAGE_PATH))).getImage();
     private Image BACKGROUND_IMAGE = (new ImageIcon(this.getClass().getResource(BACKGROUND_IMAGE_PATH))).getImage();
     private Image GAME_OVER_IMAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_PATH))).getImage();
+    private Image GAME_OVER_IMAGE_2 = (new ImageIcon(this.getClass().getResource(GAME_OVER_IMAGE_2_PATH))).getImage();
     private Image GAME_OVER_MESSAGE = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE_PATH))).getImage();
     private Image GAME_OVER_MESSAGE2 = (new ImageIcon(this.getClass().getResource(GAME_OVER_MESSAGE2_PATH))).getImage();
     
@@ -106,11 +109,16 @@ public class Level extends JPanel {
                 
             //The game over screen
             case 3:
-            
+                graphics.setColor(Color.WHITE);
+                Font font = new Font("ISOCT", Font.PLAIN, 60);
+                graphics.drawString((int)distance + "", 500, 375);
+                graphics.drawImage(GAME_OVER_IMAGE_2, 0, 0, this);
+                
+                /*
                 graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
                 graphics.drawImage(GAME_OVER_MESSAGE, 325, 550, this);
                 graphics.drawImage(GAME_OVER_MESSAGE2, 540, 100,this);
-                
+                */
             break;
         }
         
@@ -190,6 +198,7 @@ public class Level extends JPanel {
                     //Add a piranha at the turtle
                     level.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                     shotsLeft--;
+                    distance -= 10;
                 } else if (key == KeyEvent.VK_LEFT) {
                     //Make the turtle move father up each frame when the left key is pressed
                     franklin.setSpeed(-10);
