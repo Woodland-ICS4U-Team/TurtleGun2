@@ -58,13 +58,15 @@ public class Piranha {
     }
     // when this is called piranha[i] will be set true and will appear in the game, starting where the turtle is
     public void addPiranha(int x, int y) {
-        if (!piranhaVisible[i]) {
-            piranhaVisible[i] = true;
-            piranhaImages[i] = image;
-            piranhaY[i] = y;
-            piranhaX[i] = x;
-            i++;
-        }
+        piranhaVisible[i] = true;
+        piranhaImages[i] = image;
+        piranhaY[i] = y;
+        piranhaX[i] = x;
+        i++;
+    }
+    
+    public void addToInventory(){
+        i --;
     }
     
     // collision detection for piranha 

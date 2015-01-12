@@ -203,7 +203,7 @@ public class Level extends JPanel {
             
                 if (key == KeyEvent.VK_SPACE) {
                     //Add a piranha at the turtle
-                    level.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
+                    nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                     shotsLeft--;
                     distance -= 10;
                 } else if (key == KeyEvent.VK_LEFT) {
@@ -252,13 +252,10 @@ public class Level extends JPanel {
         }
     }
     
-    public void addPiranha(int x, int y) {
-        nemo.addPiranha(x, y);
-    }
-    
     //Add a piranha to the inventory
     public void addToInventory() {
         shotsLeft ++;
+        nemo.addToInventory();
     }
     
     //Called when the user runs out of lives by the run method
