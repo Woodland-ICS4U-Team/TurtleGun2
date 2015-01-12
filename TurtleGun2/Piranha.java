@@ -66,6 +66,7 @@ public class Piranha {
             i++;
         }
     }
+    
     // collision detection for piranha 
     public void move(int speed, Obstacle obstacle) {
         

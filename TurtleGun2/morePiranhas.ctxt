@@ -1,8 +1,16 @@
 #BlueJ class context
 comment0.params=
-comment0.target=morePiranhas()
+comment0.target=MorePiranhas()
 comment1.params=
-comment1.target=void\ piranhaSpawn()
-comment2.params=turtle
-comment2.target=boolean\ move(Turtle)
-numComments=3
+comment1.target=void\ spawn()
+comment2.params=
+comment2.target=boolean\ getVisible()
+comment3.params=
+comment3.target=int\ getY()
+comment4.params=
+comment4.target=int\ getX()
+comment5.params=
+comment5.target=java.awt.Image\ getImage()
+comment6.params=turtle\ level
+comment6.target=boolean\ move(Turtle,\ Level)
+numComments=7
