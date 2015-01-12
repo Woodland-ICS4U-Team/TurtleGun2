@@ -47,7 +47,7 @@ public class Level extends JPanel {
     private int gameMode = 1;
     private int hitObjectNumber = -1;
     private int shotsLeft;
-    private double distance = 0;
+    private double score = 0;
 
 
     //----------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ public class Level extends JPanel {
                 
                 graphics.drawString("Piranhas Left: " +  shotsLeft, 10, 10);
                 
-                graphics.drawString("Score: " +  (int)distance, 150, 10);
+                graphics.drawString("Score: " +  (int)score, 150, 10);
                 
                 for (int i = 0; i < obstacles.getNumObstacles(); i++) {
                     if (obstacles.getVisible(i)) {
@@ -116,7 +116,7 @@ public class Level extends JPanel {
             case 3:
                 graphics.setColor(Color.WHITE);
                 Font font = new Font("ISOCT", Font.PLAIN, 60);
-                graphics.drawString((int)distance + "", 500, 375);
+                graphics.drawString((int)score + "", 500, 375);
                 graphics.drawImage(GAME_OVER_IMAGE_2, 0, 0, this);
                 
                 /*
@@ -145,7 +145,7 @@ public class Level extends JPanel {
             //Code that is run during the game screen
             case 2:
                 
-                distance += .1;
+                score += .1;
                 
                 //Move all of the objects
                 franklin.move();
@@ -205,7 +205,11 @@ public class Level extends JPanel {
                     //Add a piranha at the turtle
                     nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                     shotsLeft--;
-                    distance -= 10;
+                    if (score >= 10) {
+                        score -= 10;
+                    } else {
+                        score = 0;
+                    }
                 } else if (key == KeyEvent.VK_LEFT) {
                     //Make the turtle move father up each frame when the left key is pressed
                     franklin.setSpeed(-10);
@@ -226,7 +230,7 @@ public class Level extends JPanel {
                     franklin.reset();
                     gameMode = 1;
                     hitObjectNumber = -1;
-                    distance = 0;
+                    score = 0;
                 }
             
             break;
