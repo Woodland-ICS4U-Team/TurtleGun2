@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Piranha {
     //Constants
-    private int MAX_SHOTS = 30;
+    private int MAX_SHOTS = 20;
     private final int BOARD_WIDTH = 1280;
     private final int MISSILE_SPEED = 2;
     
@@ -21,7 +21,7 @@ public class Piranha {
     private Image[] piranhaImages = new Image[MAX_SHOTS];
 
     //Keeps track of prianhas fired
-    private int numPiranhas = 15;
+    private int i = 0;
     private int hit = 0;
     private int obstacleDestroyed = 0;
     public Piranha() {
@@ -29,8 +29,8 @@ public class Piranha {
         image = ii.getImage();
     }
     
-    public Image getImage(int x) {
-        return piranhaImages[x];
+    public Image getImage() {
+        return image;
     }
     // the X value of the piranha
     public int getX(int i) {
@@ -44,23 +44,19 @@ public class Piranha {
     public int getNumPiranhas() {
         return MAX_SHOTS;
     }
-    public int getInventory() {
-        return numPiranhas;
-    }
     //used to tell if the piranha is shot and the piranha is visible
     public boolean getVisible(int piranhaNumber) {
         return piranhaVisible[piranhaNumber];
     }
     //used to reset the number of shots
     public void reset(){
-        numPiranhas = 15;
+        i = 0;
     }
     public int getObstaclesDestroyed() {
         return obstacleDestroyed;
     }
     // when this is called piranha[i] will be set true and will appear in the game, starting where the turtle is
     public void addPiranha(int x, int y) {
-        int i = 0;
         for (int z = 0; z < MAX_SHOTS; z++) {
             if (!piranhaVisible[z]) {
                 i = z;
@@ -70,11 +66,11 @@ public class Piranha {
         piranhaImages[i] = image;
         piranhaY[i] = y;
         piranhaX[i] = x;
-        numPiranhas--;
+        i++;
     }
     
     public void addToInventory(){
-        numPiranhas++;
+        i --;
     }
     
     // collision detection for piranha 
@@ -82,9 +78,9 @@ public class Piranha {
         
         for (int i = 0; i < MAX_SHOTS; i++) {
             if (piranhaVisible[i]) {
-                hit = obstacle.checkCollisions(getX(i), getY(i), getImage(i).getWidth(null), getImage(i).getHeight(null));
+                hit = obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null));
                 if (hit != -1) { //hit = -1 if obstacle is hit, so it hides the obstacle and the piranha
-                    obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage(i).getWidth(null), getImage(i).getHeight(null)));
+                    obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
                     piranhaVisible[i] = false;
                     obstacleDestroyed++;
                 }

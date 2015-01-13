@@ -189,7 +189,7 @@ public class Level extends JPanel {
                 //Start the game if space is pressed
                 if (key == KeyEvent.VK_SPACE) {
                     gameMode = 2;
-                    shotsLeft = nemo.getNumPiranhas();
+                    shotsLeft = nemo.getNumPiranhas() - 5;
                    
                 }
             
@@ -200,8 +200,10 @@ public class Level extends JPanel {
             
                 if (key == KeyEvent.VK_SPACE) {
                     //Add a piranha at the turtle
-                    nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
-                    shotsLeft--;
+                    if (shotsLeft > 0){
+                        nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
+                        shotsLeft--;
+                    }
                     if (score >= 10) {
                         score -= 10;
                     } else {
@@ -255,13 +257,15 @@ public class Level extends JPanel {
     }
     
     public void addPiranha(int x, int y) {
-        nemo.addPiranha(x, y);
+            nemo.addPiranha(x, y);
     }
     
     //Add a piranha to the inventory
     public void addToInventory() {
-        shotsLeft ++;
-        nemo.addToInventory();
+        if (shotsLeft < 20) { 
+            shotsLeft ++;
+            nemo.addToInventory();
+        }
     }
     
     //Called when the user runs out of lives by the run method
