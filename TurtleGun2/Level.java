@@ -203,12 +203,13 @@ public class Level extends JPanel {
                     if (shotsLeft > 0){
                         nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                         shotsLeft--;
+                        if (score >= 10) {
+                            score -= 10;
+                        } else {
+                            score = 0;
+                        }
                     }
-                    if (score >= 10) {
-                        score -= 10;
-                    } else {
-                        score = 0;
-                    }
+                    
                 } else if (key == KeyEvent.VK_LEFT) {
                     //Make the turtle move father up each frame when the left key is pressed
                     franklin.setSpeed(-10);
