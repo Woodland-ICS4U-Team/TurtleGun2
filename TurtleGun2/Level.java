@@ -224,6 +224,7 @@ public class Level extends JPanel {
                 if (key == KeyEvent.VK_SPACE) {
                     nemo.reset();
                     obstacles.reset();
+                    piranhaSpawn.reset();
                     franklin.reset();
                     gameMode = 1;
                     hitObjectNumber = -1;
