@@ -62,6 +62,10 @@ public class MorePiranhas {
             boolean hit = false;
             // moves piranha at desired speed
             piranhaX -= 5; 
+            
+            if (piranhaX < -20) {
+                    piranhaVisible = false;
+                }
             if (piranhaX < turtleX + turtleWidth && piranhaX + IMAGE_WIDTH > turtleX) { //If they overlap on X
                 if (piranhaY < turtleY + turtleHeight && piranhaY + IMAGE_WIDTH > turtleY) { // If they overlap on Y
                     hit = true; //We hit something
@@ -73,9 +77,6 @@ public class MorePiranhas {
                 }
                  
                  // if piranha has reached the end of the board without hitting anything, makes it invisible
-                if (piranhaX < -20) {
-                    piranhaVisible = false;
-                }
                 return hit;
             }
         } 
