@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class MorePiranhas {
     
-    private int PIRANHA_SPAWN_DENSITY = 200;
+    private int piranhaSpawnDensity = 200;
     private int IMAGE_WIDTH = 50;
     private int IMAGE_HEIGHT = 25;
     private int STARTING_X = TurtleGun2.getLevelWidth();
@@ -24,12 +24,19 @@ public class MorePiranhas {
     }
     
     public void spawn() {
-        if (!piranhaVisible && number.nextInt(PIRANHA_SPAWN_DENSITY) == 1) {
-            System.out.println("spawned");
+        if (!piranhaVisible && number.nextInt(piranhaSpawnDensity) == 1) {
+            if (piranhaSpawnDensity > 50) {
+                piranhaSpawnDensity -= 10;
+            }
             piranhaVisible = true;
             piranhaY = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
             piranhaX = STARTING_X;
         }
+    }
+    
+    public void reset() {
+        piranhaSpawnDensity = 200;
+        piranhaVisible = false;
     }
     
     public boolean getVisible(){

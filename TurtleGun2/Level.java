@@ -116,17 +116,10 @@ public class Level extends JPanel {
                 
             //The game over screen
             case 3:
-                if (score > 100) {
-                    graphics.setColor(Color.WHITE);
-                    Font font = new Font("ISOCT", Font.PLAIN, 60);
-                    graphics.drawImage(FINAL_SCREEN, 0, 0, this);
-                    graphics.drawString((int)score + "", 500, 150);
-                    
-                } else {
-                    graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
-                    graphics.drawImage(GAME_OVER_MESSAGE, 325, 550, this);
-                    graphics.drawImage(GAME_OVER_MESSAGE2, 540, 100,this);
-                }
+                    Font font = new Font("cubicfive18", Font.PLAIN, 25);
+                    graphics.setFont(font);
+                    graphics.setColor(new Color(39, 139, 34));
+                    graphics.drawString("SCORE: " + (int)score, 590, 175);
                 
             break;
         }
@@ -231,6 +224,7 @@ public class Level extends JPanel {
                 if (key == KeyEvent.VK_SPACE) {
                     nemo.reset();
                     obstacles.reset();
+                    piranhaSpawn.reset();
                     franklin.reset();
                     gameMode = 1;
                     hitObjectNumber = -1;
