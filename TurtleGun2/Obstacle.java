@@ -115,8 +115,8 @@ public class Obstacle {
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
             if (!obstacleHit[i] && obstacleVisible[i]) {
-                if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 20 + obstacleImage[i].getWidth(null) > thingX)) {
-                    if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 20 + obstacleImage[i].getHeight(null) > thingY)) {
+                if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 10 + obstacleImage[i].getWidth(null) > thingX)) {
+                    if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 10 + obstacleImage[i].getHeight(null) > thingY)) {
                         return i;
                     }
                 }
