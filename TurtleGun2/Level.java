@@ -120,6 +120,9 @@ public class Level extends JPanel {
                     graphics.setFont(font);
                     graphics.setColor(new Color(39, 139, 34));
                     graphics.drawString("SCORE: " + (int)score, 590, 175);
+                    graphics.drawImage(GAME_OVER_IMAGE, 400, 210, this);
+                    graphics.drawImage(GAME_OVER_MESSAGE, 325, 550, this);
+                    graphics.drawImage(GAME_OVER_MESSAGE2, 540, 100,this);
                 
             break;
         }
