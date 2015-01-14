@@ -114,9 +114,9 @@ public class Obstacle {
     //If there is a collision, it returns the number of the obstacle that has been hit
     public int checkCollisions(int thingX, int thingY, int thingWidth, int thingHeight) {
         for (int i = 0; i < MAX_OBSTACLES; i ++) {
-            if (!obstacleHit[i]) {
-                if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 10 + OBSTACLE_WIDTH > thingX)) {
-                    if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 10 + OBSTACLE_WIDTH > thingY)) {
+            if (!obstacleHit[i] && obstacleVisible[i]) {
+                if ((obstacleX[i] + 10 < thingX + thingWidth) && (obstacleX[i] - 20 + obstacleImage[i].getWidth(null) > thingX)) {
+                    if ((obstacleY[i] + 10 < thingY + thingHeight) && (obstacleY[i] - 20 + obstacleImage[i].getHeight(null) > thingY)) {
                         return i;
                     }
                 }

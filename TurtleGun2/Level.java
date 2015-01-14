@@ -157,7 +157,7 @@ public class Level extends JPanel {
                 obstacles.moveObstacles(LEVEL_SPEED);
                 
                 //hitObjectNumber is -1 if nothing was hit, and the object number (0-9) if something was
-                hitObjectNumber = obstacles.checkCollisions(franklin.getX() + 10, franklin.getY() + 10, franklin.getWidth() - 20, franklin.getHeight() - 20);
+                hitObjectNumber = obstacles.checkCollisions(franklin.getX(), franklin.getY(), franklin.getWidth(), franklin.getHeight());
                 
                 //Remove the obstacle and decreace the players lives
                 if (hitObjectNumber != -1) {
@@ -169,7 +169,7 @@ public class Level extends JPanel {
                 }
                 
                 //Remove people hit by the narwal
-                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX() + 20, narwhal.getY() + 20, narwhal.getWidth() - 40, narwhal.getHeight()- 40));
+                obstacles.removeObstacle(obstacles.checkCollisions(narwhal.getX(), narwhal.getY(), narwhal.getWidth(), narwhal.getHeight()));
             
             break;
             
@@ -206,17 +206,17 @@ public class Level extends JPanel {
                     if (shotsLeft > 0){
                         nemo.addPiranha((franklin.getX() + franklin.getWidth() / 2), franklin.getY() + franklin.getHeight() / 2  - 12);
                         shotsLeft--;
-                        if (score >= 10) {
-                            score -= 10;
+                        if (score >= 5) {
+                            score -= 5;
                         } else {
                             score = 0;
                         }
                     }
                     
-                } else if (key == KeyEvent.VK_LEFT) {
+                } else if ((key == KeyEvent.VK_LEFT) || (key == KeyEvent.VK_UP)) {
                     //Make the turtle move father up each frame when the left key is pressed
                     franklin.setSpeed(-10);
-                } else if (key == KeyEvent.VK_RIGHT) {
+                } else if ((key == KeyEvent.VK_RIGHT) || (key == KeyEvent.VK_DOWN)) {
                     //Made the turtle move farther down each frame when the right key is pressed
                     franklin.setSpeed(10);
                 }
@@ -251,7 +251,7 @@ public class Level extends JPanel {
             //When a key is released during the game
             case 2:
                 
-                if ((key == KeyEvent.VK_LEFT) || (key == KeyEvent.VK_RIGHT)) {
+                if ((key == KeyEvent.VK_LEFT) || (key == KeyEvent.VK_RIGHT) || (key == KeyEvent.VK_UP) || (key == KeyEvent.VK_DOWN)) {
                     //Make the turtle stop moving if a left or right key was released
                     franklin.setSpeed(0);
                 }
