@@ -51,6 +51,10 @@ public class Piranha {
     //used to reset the number of shots
     public void reset(){
         i = 0;
+        for (int x = 0; x < MAX_SHOTS; x++) {
+            piranhaVisible[x] = false;
+            
+        }
     }
     public int getObstaclesDestroyed() {
         return obstacleDestroyed;
