@@ -4,27 +4,25 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Narwhal {
-    private int distance;
     private String narwhalImage = "NarwhalAnimated.gif";
-    private int width;
-    private int height;
-    private int x = 0;
-    private int y = 150;
-    private double z = 0;
+    private int width; //width of the image
+    private int height; //height of the image
+    private int x = 0; //x coordinate of the narwhal
+    private int y = 150; //y coordinate of the narwhal
+    private double z = 0; //x value of the sine function the narwhal follows 
     private Image image;
-    // Narwhal image constructor
+    
     public Narwhal() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(narwhalImage));
         image = ii.getImage();
         width = image.getWidth(null);
         height = image.getHeight(null);
-        System.out.println("Width is " + width + " height is " + height);
     }
 
     public Image getImage() {
         return image;
     }
-    //Gets the coordinates
+    //These functions get variables for level to use
     public int getX() {
         return x;
     }
@@ -32,15 +30,15 @@ public class Narwhal {
     public int getY() {
         return y;
     }
-
+    
     public int getWidth() {
         return width;
-     }
+    }
     
     public int getHeight() {
         return height;
     }
-    //Sin fuction narwhal to move
+    //Sine fuction that moves the narwhal
     public void move() {
         y = (int)(260 * Math.sin(z)) + 250;
         z += 0.05;

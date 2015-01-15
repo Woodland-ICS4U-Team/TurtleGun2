@@ -60,7 +60,7 @@ public class MorePiranhas {
         System.out.println("coordinates = " + piranhaX + ", " + piranhaY);
         
         if (piranhaVisible) {
-            //add hit detectyion for turtle
+            //add hit detection for turtle
             int turtleX = turtle.getX();
             int turtleY = turtle.getY();
             int turtleHeight = turtle.getHeight();

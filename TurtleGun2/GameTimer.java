@@ -3,7 +3,6 @@ import java.awt.Graphics2D;
 import java.util.*;
 
 public class GameTimer extends TimerTask {
-    
     Level level;
     
     public GameTimer(Level temp) {
