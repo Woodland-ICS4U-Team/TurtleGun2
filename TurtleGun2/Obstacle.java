@@ -63,33 +63,31 @@ public class Obstacle {
 //----------------------------------------------------------------------------------------
     //This function is called several times per second by the run method of the Level class, and decides whether to place an obstacle
     public void addObstacle() {
-        //The lower OBSTACLE_PROBABILITY is, the more likely an obstacle is to spawn
-        if (number.nextInt(OBSTACLE_PROBABILITY) == 1) {
-            //When difficulty increaces, the obstacles move closer together
-            for (int i = 0; (i < MAX_OBSTACLES); i ++) {
-                //Search for obstacles that are off the screen
-                if (!obstacleVisible[i]) {
-                    //Generate a starting position for the obstacle
-                    int x = STARTING_X;
-                    int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
-                    //If an obstacle can be spawned at the generated coordinates, spawn it
-                    if (canPlaceObstacle(x, y)) {
-                        //Increace the difficulty when an obstacle is created
-                        if (difficulty < MAX_DIFFICULTY) {
-                            difficulty += DIFFICULTY_INCREACE;
-                        }
-                        //Create the obstacle by filling in all of the arrays
-                        obstacleVisible[i] = true;
-                        obstacleHit[i] = false;
-                        obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
-                        obstacleY[i] = y;
-                        obstacleX[i] = x;
-                        //End the function when an obstacle has been created
-                        return;
+        //When difficulty increaces, the obstacles move closer together
+        for (int i = 0; (i < MAX_OBSTACLES); i ++) {
+            //Search for obstacles that are off the screen
+            if (!obstacleVisible[i]) {
+                //Generate a starting position for the obstacle
+                int x = STARTING_X;
+                int y = number.nextInt(MAX_STARTING_Y - MIN_STARTING_Y) + MIN_STARTING_Y;
+                //If an obstacle can be spawned at the generated coordinates, spawn it
+                if (canPlaceObstacle(x, y)) {
+                    //Increace the difficulty when an obstacle is created
+                    if (difficulty < MAX_DIFFICULTY) {
+                        difficulty += DIFFICULTY_INCREACE;
                     }
+                    //Create the obstacle by filling in all of the arrays
+                    obstacleVisible[i] = true;
+                    obstacleHit[i] = false;
+                    obstacleImage[i] = obstacleImages[number.nextInt(NUM_IMAGES)];
+                    obstacleY[i] = y;
+                    obstacleX[i] = x;
+                    //End the function when an obstacle has been created
+                    return;
                 }
             }
         }
+
     }
     
     //This function turns off collision detection for the obstacle, and replaces the image with blood
@@ -147,20 +145,24 @@ public class Obstacle {
         int objX;
         int objY;
         double distance;
-        //Check each obstacle, and make sure it is not too close to each other
-        for (int i = 0; i < MAX_OBSTACLES; i++) {
-            if (obstacleVisible[i] == true) {
-                objX = obstacleX[i];
-                objY = obstacleY[i];
-                //Use pythagorean theorem to determine the distance between the obstacles
-                distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
-                //If the distance between the obstacles is smaller than the minimum allowable distance, return false
-                if (distance < (MIN_OBSTACLE_DISTANCE - ((difficulty) * 20))) {
-                    return false;
+        //The lower OBSTACLE_PROBABILITY is, the more likely an obstacle is to spawn
+        if (number.nextInt(OBSTACLE_PROBABILITY) == 1) {
+            //Check each obstacle, and make sure it is not too close to each other
+            for (int i = 0; i < MAX_OBSTACLES; i++) {
+                if (obstacleVisible[i] == true) {
+                    objX = obstacleX[i];
+                    objY = obstacleY[i];
+                    //Use pythagorean theorem to determine the distance between the obstacles
+                    distance = Math.sqrt(Math.pow((objX - x), 2) + Math.pow((objY - y), 2));
+                    //If the distance between the obstacles is smaller than the minimum allowable distance, return false
+                    if (distance < (MIN_OBSTACLE_DISTANCE - ((difficulty) * 20))) {
+                        return false;
+                    }
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
     
     //Level calls this to reset all the variables
