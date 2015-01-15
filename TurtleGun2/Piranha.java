@@ -7,23 +7,18 @@ public class Piranha {
     //Constants
     private int MAX_SHOTS = 20;
     private final int BOARD_WIDTH = 1280;
-    private final int MISSILE_SPEED = 2;
     
     //Prianha constructs
     private String prianhaImage = "Piranha.png";
-    private int x, y;
     private Image image;
-    private boolean visible;
-    private int width, height;
     private int piranhaX[] = new int[MAX_SHOTS];
     private int piranhaY[] = new int[MAX_SHOTS];    
     private boolean piranhaVisible[] = new boolean[MAX_SHOTS];
     private Image[] piranhaImages = new Image[MAX_SHOTS];
 
     //Keeps track of prianhas fired
-    private int i = 0;
+    private int currentPiranha = 0;
     private int hit = 0;
-    private int obstacleDestroyed = 0;
     public Piranha() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
@@ -50,31 +45,32 @@ public class Piranha {
     }
     //used to reset the number of shots
     public void reset(){
-        i = 0;
+        currentPiranha = 0;
+        // for loop will go through the piranha array and make sure they are all invisible
         for (int x = 0; x < MAX_SHOTS; x++) {
             piranhaVisible[x] = false;
             
         }
     }
-    public int getObstaclesDestroyed() {
-        return obstacleDestroyed;
-    }
+   
     // when this is called piranha[i] will be set true and will appear in the game, starting where the turtle is
     public void addPiranha(int x, int y) {
+        // for loop will look for and invisible piranhas for it to use when a shot is made
         for (int z = 0; z < MAX_SHOTS; z++) {
             if (!piranhaVisible[z]) {
-                i = z;
+                currentPiranha = z;
             }
         }
-        piranhaVisible[i] = true;
-        piranhaImages[i] = image;
-        piranhaY[i] = y;
-        piranhaX[i] = x;
-        i++;
+        piranhaVisible[currentPiranha] = true; //level will look for all the visible piranhas and draw them
+        piranhaImages[currentPiranha] = image;
+        piranhaY[currentPiranha] = y; //sets piranha to the Turtles y value
+        piranhaX[currentPiranha] = x; //sets prianha to the Turtles x value
+        currentPiranha++;
     }
     
     public void addToInventory(){
-        i --;
+        //when this is called the current piraha slot is moved back one
+        currentPiranha --;
     }
     
     // collision detection for piranha 
@@ -85,8 +81,7 @@ public class Piranha {
                 hit = obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null));
                 if (hit != -1) { //hit = -1 if obstacle is hit, so it hides the obstacle and the piranha
                     obstacle.removeObstacle(obstacle.checkCollisions(getX(i), getY(i), getImage().getWidth(null), getImage().getHeight(null)));
-                    piranhaVisible[i] = false;
-                    obstacleDestroyed++;
+                    piranhaVisible[i] = false; 
                 }
                 // moves piranha at desired speed
                 piranhaX[i] += speed; 
