@@ -25,6 +25,8 @@ public class Piranha {
     //Keeps track of prianhas fired
     private int currentPiranha = 0;
     private int hit = 0;
+    
+    //Constructor for Piranha
     public Piranha() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(prianhaImage));
         image = ii.getImage();
@@ -64,7 +66,18 @@ public class Piranha {
         }
         
     } 
-    
+        //used to reset the number of shots 
+    public void reset(){
+        currentPiranha = 0;
+        // for loop will go through the piranha array and make sure they are all invisible
+        for (int x = 0; x < MAX_SHOTS; x++) {
+            piranhaVisible[x] = false;
+            
+        }
+    }
+    ///----------------------------------------------------------------------------\\\
+    ///---------------Begin Acessors and Modifiers for Piranha class---------------\\\
+    ///----------------------------------------------------------------------------\\\
     public Image getImage() {
         return image;
     }
@@ -84,16 +97,7 @@ public class Piranha {
     public boolean getVisible(int piranhaNumber) {
         return piranhaVisible[piranhaNumber];
     }
-    //used to reset the number of shots
-    public void reset(){
-        currentPiranha = 0;
-        // for loop will go through the piranha array and make sure they are all invisible
-        for (int x = 0; x < MAX_SHOTS; x++) {
-            piranhaVisible[x] = false;
-            
-        }
-    }
-    
+
     public void addToInventory(){
         //when this is called the current piraha slot is moved back one
         currentPiranha --;
