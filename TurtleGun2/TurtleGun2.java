@@ -25,7 +25,6 @@ public class TurtleGun2 extends JFrame{
     
     public static void main(String [] args) {
         new TurtleGun2();
-        System.out.println("the main ran");
     }
     
     public static int getLevelHeight() {
