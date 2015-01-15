@@ -1,4 +1,8 @@
-
+//Turtle class in TurtleGun2
+//Contains methods that allow the turtle to move
+//Coded by Matthew Milne
+//Commented by Caleb Isaacs
+//January 15, 2015
 import java.awt.event.KeyEvent;
 import java.awt.Image;
 import javax.swing.ImageIcon;

@@ -1,3 +1,8 @@
+//Narwhal class in TurtleGun2
+//Contains functions that allow the narwhal to move
+//Coded by Matthew Milne
+//Commented by Caleb Isaacs
+//January 15, 2015
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.*;
